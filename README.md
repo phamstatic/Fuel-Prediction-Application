@@ -10,6 +10,10 @@ sudo apt-get install curl # Need this to be able to install Node.js
 nvm install --lts # Installs Node.js
 
 node -v # Should be v18.18.0
+
+# You'll also need to download these frameworks for multi-page navigation.
+npm install react-router-dom 
+npm install --save styled-components
 ```
 ### Beginning React Development
 Fetch the repository (git fetch) or clone (git clone https://github.com/phamstatic/Fuel-Prediction-Application/) into a new folder.
