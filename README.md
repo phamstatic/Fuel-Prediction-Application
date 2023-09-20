@@ -16,10 +16,12 @@ npm install react-router-dom
 npm install --save styled-components
 ```
 ### Beginning React Development
-Fetch the repository (git fetch) or clone (git clone https://github.com/phamstatic/Fuel-Prediction-Application/) into a new folder.
+Pull the repository for any updates to the main branch (git pull) or clone (git clone https://github.com/phamstatic/Fuel-Prediction-Application/) into a new folder.
 
 Open the front-end folder and type in the console: **npm install** <br>
 > This is needed because our .gitignore file does not save the modules into our repository. Using npm install will give you the required dependencies and packages to make React work.
 
 To begin hosting the app, run **npm start**
 > Now the application should be on a local port running on the browser. Any change/edit done will be updated automatically.
+
+# DONT FORGET TO BRANCH OUT WHEN DEVELOPING
