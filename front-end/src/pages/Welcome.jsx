@@ -1,5 +1,5 @@
 import React from "react";
-import "../components/home/Welcome.css";
+import "../stylesheets/Welcome.css";
 import { NavLink as Link } from "react-router-dom";
 
 const Welcome = () => {

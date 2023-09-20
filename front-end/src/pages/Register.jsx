@@ -1,5 +1,5 @@
 import React from "react";
-import "../components/home/Home.css";
+import "../stylesheets/Home.css";
 import { NavLink as Link } from "react-router-dom";
 
 const Register = () => {
