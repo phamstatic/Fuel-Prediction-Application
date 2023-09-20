@@ -1,5 +1,6 @@
 import React from "react";
 import "../components/home/Home.css";
+import { NavLink as Link } from "react-router-dom";
 
 const Login = () => {
     return (
@@ -18,8 +19,10 @@ const Login = () => {
                         </div>
                     </div>
                     <div class="submit-button-wrapper">
-                        <input type="submit" class="submit-button" value="Login" />
-                    </div>
+                        <Link to="/Profile">
+                            <input type="submit" class="submit-button" value="Login" />
+                        </Link>
+                     </div>
                 </form>
             </div>
         </>
