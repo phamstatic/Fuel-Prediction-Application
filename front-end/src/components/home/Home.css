@@ -27,6 +27,7 @@ body {
 .title {
   font-size: 25px;
   font-weight: 500;
+  align-self: flex-start;
 }
 
 .input-group {
@@ -35,7 +36,6 @@ body {
   justify-content: space-between;
   margin: 20px 0 12px 0;
 }
-
 
 .input-field {
   margin-bottom: 15px;
@@ -46,6 +46,7 @@ body {
   display: block;
   font-weight: 500;
   margin-bottom: 5px;
+  text-align: left;
 }
 
 .input-field .dropdown {
