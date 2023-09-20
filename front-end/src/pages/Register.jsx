@@ -1,5 +1,6 @@
 import React from "react";
 import "../components/home/Home.css";
+import { NavLink as Link } from "react-router-dom";
 
 const Register = () => {
     return (
@@ -18,7 +19,9 @@ const Register = () => {
                         </div>
                     </div>
                     <div class="submit-button-wrapper">
-                        <input type="submit" class="submit-button" value="Register" />
+                        <Link to="/">
+                            <input type="submit" class="submit-button" value="Register" />
+                        </Link>
                     </div>
                 </form>
             </div>
