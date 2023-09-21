@@ -1,0 +1,12 @@
+.navigationBar {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    margin: 20px 0px 20px 20px;
+}
+
+.logo, .navButton {
+    text-shadow: 5px 5px 5px black;
+    height: 75px;
+    width: 100px;
+}
