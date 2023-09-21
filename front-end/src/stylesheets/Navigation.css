@@ -1,12 +1,20 @@
 .navigationBar {
+    display: flex;
     position: absolute !important;
     top: 0 !important;
     left: 0 !important;
     margin: 20px 0px 20px 20px;
 }
 
-.logo, .navButton {
-    text-shadow: 5px 5px 5px black;
+.logo {
     height: 75px;
     width: 100px;
+}
+
+.apptitle {
+    font-size: 20px;
+    font-weight: 500;
+    text-shadow: 5px 5px 5px black;
+    margin: 20px 0px 0px 20px;
+    color: white;
 }
