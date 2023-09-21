@@ -1,9 +1,12 @@
 import React from "react";
-import "../components/home/Home.css";
+import "../stylesheets/Home.css";
+import { NavLink as Link } from "react-router-dom";
+import NavigationBar from "../components/NavigationBar";
 
 const Register = () => {
     return (
         <>
+            <NavigationBar/>
             <div class="container">
                 <div class="title">Register</div>
                 <form action="profile.html">
@@ -18,7 +21,9 @@ const Register = () => {
                         </div>
                     </div>
                     <div class="submit-button-wrapper">
-                        <input type="submit" class="submit-button" value="Register" />
+                        <Link to="/">
+                            <input type="submit" class="submit-button" value="Register" />
+                        </Link>
                     </div>
                 </form>
             </div>
