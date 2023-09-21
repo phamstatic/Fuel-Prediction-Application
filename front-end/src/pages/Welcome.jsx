@@ -2,6 +2,7 @@ import React from "react";
 import "../stylesheets/Welcome.css";
 import { NavLink as Link } from "react-router-dom";
 import NavigationBar from "../components/NavigationBar";
+
 const Welcome = () => {
     return (
         <>

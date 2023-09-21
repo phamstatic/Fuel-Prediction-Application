@@ -1,10 +1,12 @@
 import React from "react";
 import "../stylesheets/Home.css";
 import { NavLink as Link } from "react-router-dom";
+import NavigationBar from "../components/NavigationBar";
 
 const Login = () => {
     return (
-        <>
+        <>            
+            <NavigationBar/>
             <div class="container">
                 <div class="title">Login</div>
                 <form action="profile.html">

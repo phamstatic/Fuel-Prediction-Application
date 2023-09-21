@@ -1,9 +1,11 @@
 import React from "react";
 import "../stylesheets/Home.css";
+import NavigationBar from "../components/NavigationBar";
 
 const Profile = () => {
     return (
         <>
+            <NavigationBar/>
             <div class="container">
                 <div class="title">Profile</div>
                 <form action="fuel.html">
