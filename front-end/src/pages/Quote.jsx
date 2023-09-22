@@ -7,10 +7,47 @@ const Quote = () => {
         <>
             <NavigationBar/>
             <div class="container">
-                <input type = "number" name = "gallons" id ="gallons" placeholder ="Gallons Requested"/>
+                <div class="title">Fuel Quote</div>
+                <form ation = " " method = "POST">
+                    <p><label for = "gallons">Enter Amount of Gallons Requested: </label>
+                    <input type = "number" name = "gallons" id ="gallons" placeholder ="Gallons Requested"/>
+                    </p>
+                    <p>Delivery Address: {/* address comes from profile info */}<br/>
+                    <label for = "deliveryDate">Select date of delivery: </label>
+                    <input type = "date" name = "deliveryDate" id = "deliveryDate"></input>
+                    </p>
+                    <p id = "SuggPrice">Suggested Price: <span id = "suggPriceValue"></span></p>
+                    <p>
+                    <input type = "submit" value = "Submit"/>
+                    </p>
+                </form>
+
+                <p id = "ActPrice">Total amount due: <span id = "Actual_Price"></span></p>
+                {/* Script BELOW MIGHT NOT but it would just update the prices */}
+                {/*<script>*/}
+                    {/*Script for the prices will be left mostly blank since no function*/}
+                    
+                    {/* SuggPrice =0;
+                    ActualPrice = 0;
+
+                    function SuggPriceCalc({}){
+                        document.getElementById("suggPriceValue").textContent = SuggPrice
+                    }
+                    
+
+                    function ActPriceCalc({}){
+                        document.getElementById("Actual_Price").textContent = ActualPrice
+                    }
+                    
+
+                    ActPriceCalc();
+                    SuggPriceCalc();*/}
+                {/*</script>*/} 
             </div>
         </>
     );
 }
+
+
 
 export default Quote;
