@@ -10,6 +10,11 @@ p{
     text-align: left;
 }
 
+#address{
+    font-size: 14px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+}
+
 .container {
   max-width: 700px;
   width: 100%;
@@ -29,4 +34,28 @@ p{
   position: relative;
   text-align: center;
   align-self: center;
+}
+
+table, th, td {
+    border: 2px solid gray;
+  }
+
+caption{
+    font-weight: bold;
+    font-size: 25px;
+}
+
+th{
+    font-size: 18px;
+    padding: 2px;
+}
+
+label{
+    text-align: left;
+}
+
+#subtitle{
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
 }

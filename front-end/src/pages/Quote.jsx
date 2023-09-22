@@ -14,9 +14,9 @@ const Quote = () => {
                     <input type = "number" name = "gallons" id ="gallons" placeholder ="Gallons Requested"/>
                     </p>
                     <p> <label for = "profitMargin">Enter Company Profit Margin: </label>
-                    <input type = "number" name = "profitMargin" id = "profitMargin"></input>
+                    <input type = "number" name = "profitMargin" id = "profitMargin" placeholder ="Profit Margin"></input>
                     </p>
-                    <p>Delivery Address: {/* address comes from profile info */}<br/>
+                    <p>Delivery Address: <span id="address">32 P Sherman Wallaby Way, Sydney, Australia</span>{/* address comes from profile info */}<br/>
                     <label for = "deliveryDate">Select date of delivery: </label>
                     <input type = "date" name = "deliveryDate" id = "deliveryDate"></input>
                     </p>

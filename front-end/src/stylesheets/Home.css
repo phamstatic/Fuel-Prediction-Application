@@ -95,7 +95,3 @@ body {
 .submit-button:hover {
   background: #1710D2;
 }
-
-table, th, td {
-  border: 2px solid gray;
-}
