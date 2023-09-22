@@ -7,7 +7,7 @@ const Quote = () => {
         <>
             <NavigationBar/>
             <div class="container">
-
+                <input type = "number" name = "gallons" id ="gallons" placeholder ="Gallons Requested"/>
             </div>
         </>
     );
