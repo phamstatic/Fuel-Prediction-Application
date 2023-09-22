@@ -7,6 +7,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Profile from './pages/Profile';
 import Quote from './pages/Quote';
+import History from './pages/History';
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
                     <Route path='/Register' element={<Register/>}/>
                     <Route path='/Profile' element={<Profile/>}/>
                     <Route path='/Profile/Quote' element={<Quote/>}/>
+                    <Route path='/Profile/History' element={<History/>}/>
                 </Routes>
             </Router>
         </div>
