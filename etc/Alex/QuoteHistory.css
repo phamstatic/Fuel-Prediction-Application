@@ -2,12 +2,27 @@ html {
   height: 100%;
   width: 100%;
 }
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background: #1f1c72;
+}
+caption{
+  color: cyan;
+}
 
 table{
-  border: 5px solid grey;
+  border: 5px solid black;
 }
 tr, th{
-  border: 2px solid grey;
+  color: white;
+  border: 3px solid grey;
 }
-
+td{
+color: white;
+  border:1px solid grey;
+}
 
