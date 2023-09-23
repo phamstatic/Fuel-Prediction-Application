@@ -7,6 +7,7 @@ const NavigationBar = () => {
         <>
             <div class = "navigationBar">
                 <img className="logo" src="https://uh.edu/brand/_img/uh_white_black.png"/>
+                <div class="apptitle">Fuel Prediction Application</div>
             </div>
         </>
     );
