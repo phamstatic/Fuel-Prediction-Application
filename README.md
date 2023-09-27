@@ -23,7 +23,7 @@ Open the front-end folder and type in the console: **npm install** <br>
 To begin hosting the app, run **npm start**
 > Now the application should be on a local port running on the browser. Any change/edit done will be updated automatically.
 
-# Instructions on Express Development (Back-End)
+### Instructions on Express Development (Back-End)
 Split the console/terminal for the application into two.
 ```bash
 cd back-end
