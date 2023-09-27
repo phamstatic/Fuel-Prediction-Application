@@ -1,6 +1,5 @@
-# Instructions on React Development
-Written by John for Windows users only 💀 <br>
-Prerequisites: Windows Subsystem for Linux (Ubuntu) and Visual Studio Code.
+## Instructions on React Development (Front-End)
+Prerequisites: Console and Visual Studio Code.
 
 ### Installing Node.js
 > We're gonna need Node.js to be able to use React <br>
@@ -23,5 +22,17 @@ Open the front-end folder and type in the console: **npm install** <br>
 
 To begin hosting the app, run **npm start**
 > Now the application should be on a local port running on the browser. Any change/edit done will be updated automatically.
+
+# Instructions on Express Development (Back-End)
+Split the console/terminal for the application into two.
+```bash
+cd back-end
+npm run dev # This is so we can run our Node scripts, which will auto-update the back-end whenever it is changed.
+```
+```bash
+cd front-end
+npm start
+```
+Running each individual part in their own console simultaneously will give us our connected application.
 
 # DONT FORGET TO BRANCH OUT WHEN DEVELOPING
