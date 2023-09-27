@@ -20,7 +20,7 @@ function App() {
 
     return (
         <div className="App">
-            <h1>{message}</h1>
+            <div style={{color: "white", fontSize:"15px"}}>{message}</div>
             <Router>
                 <Routes>
                     <Route path='/' element={<Welcome/>}/>
