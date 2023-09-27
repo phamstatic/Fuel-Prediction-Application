@@ -1,5 +1,5 @@
 import './App.css';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Welcome from './pages/Welcome';
@@ -10,8 +10,17 @@ import Quote from './pages/Quote';
 import History from './pages/History';
 
 function App() {
+    const [message, setMessage] = useState("");
+
+    useEffect(() => {
+      fetch("http://localhost:8000/message")
+        .then((res) => res.json())
+        .then((data) => setMessage(data.message));
+    }, []);
+
     return (
         <div className="App">
+            <div style={{color: "white", fontSize:"15px"}}>{message}</div>
             <Router>
                 <Routes>
                     <Route path='/' element={<Welcome/>}/>
