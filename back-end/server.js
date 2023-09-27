@@ -7,7 +7,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/message', (req, res) => {
-    res.json({ message: "Hello from server!" });
+    res.json({ message: "**The front-end is connected to the back-end.**" });
 });
 
 app.listen(8000, () => {
