@@ -27,6 +27,8 @@ To begin hosting the app, run **npm start**
 Split the console/terminal for the application into two.
 ```bash
 cd back-end
+npm install express cors
+npm install nodemon --save-dev
 npm run dev # This is so we can run our Node scripts, which will auto-update the back-end whenever it is changed.
 ```
 ```bash
