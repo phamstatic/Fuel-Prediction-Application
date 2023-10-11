@@ -6,8 +6,8 @@ const Quote = () => {
     return (
         <>
             <NavigationBar/>
-            <div class="container">
-                <div class="title">Fuel Quote</div>
+            <div className="container">
+                <div className="title">Fuel Quote</div>
 
                 <form action = " " method = "POST">
                     <p><label for = "gallons">Enter Amount of Gallons Requested: </label>

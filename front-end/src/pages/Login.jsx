@@ -5,9 +5,9 @@ import NavigationBar from "../components/NavigationBar";
 import { useState } from "react";
 import axios from "axios";
 const Login = () => {
+    
     const port = 8000;
-
-    const [formData, setFormData] = useState({});
+    const [formData, setFormData] = useState();
   
     const handleChange = (event) => {
       setFormData({
@@ -16,10 +16,10 @@ const Login = () => {
       });
     }
   
-    const handleSubmit = (event) => {
+    const loginForm = (event) => {
       event.preventDefault();
   
-      axios.post(`http://localhost:${port}/api/login`, formData)
+      axios.post(`http://localhost:${port}/Login`, formData)
         .then((response) => {
           console.log(response.data);
         })
@@ -31,21 +31,21 @@ const Login = () => {
     return (
         <>            
             <NavigationBar/>
-            <div class="container">
-                <div class="title">Login</div>
-                <form id="login" onSubmit={handleSubmit}> 
-                    <div class="input-group">
-                        <div class="input-field">
-                            <span class="input-label">Username</span>
+            <div className="container">
+                <div className="title">Login</div>
+                <form id="login" onSubmit={loginForm}> 
+                    <div className="input-group">
+                        <div className="input-field">
+                            <span className="input-label">Username</span>
                             <input id="username" name="username" type="text" placeholder="Enter your username" onChange={handleChange} required />
                         </div>
-                        <div class="input-field">
-                            <span class="input-label">Password</span>
+                        <div className="input-field">
+                            <span className="input-label">Password</span>
                             <input id="password" name="password" type="password" placeholder="Enter your password" onChange={handleChange} required />
                         </div>
                     </div>
-                    <div class="submit-button-wrapper">
-                        <input type="submit" class="submit-button" value="Login" />
+                    <div className="submit-button-wrapper">
+                        <input type="submit" className="submit-button" value="Login" />
                      </div>
                 </form>
             </div>

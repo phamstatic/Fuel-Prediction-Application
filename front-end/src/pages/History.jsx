@@ -7,8 +7,8 @@ const History = () => {
         <>
         
             <NavigationBar/>
-            <div class="container">
-                {/*<div class="title">Fuel Quote History</div>*/}
+            <div className="container">
+                {/*<div className="title">Fuel Quote History</div>*/}
                 
                 <table>
                         <caption>Fuel Quote History</caption>

@@ -6,32 +6,32 @@ const Profile = () => {
     return (
         <>
             <NavigationBar/>
-            <div class="container">
-                <div class="title">Profile</div>
+            <div className="container">
+                <div className="title">Profile</div>
                 <form action="fuel.html">
-                    <div class="input-group">
-                        <div class="input-field">
-                            <span class="input-label">Full Name</span>
+                    <div className="input-group">
+                        <div className="input-field">
+                            <span className="input-label">Full Name</span>
                             <input type="text" placeholder="Enter your full name" maxlength="50" required />
                         </div>
-                        <div class="input-field">
-                            <span class="input-label"></span>
+                        <div className="input-field">
+                            <span className="input-label"></span>
                         </div>
-                        <div class="input-field">
-                            <span class="input-label">Address 1</span>
+                        <div className="input-field">
+                            <span className="input-label">Address 1</span>
                             <input type="text" placeholder="Enter your address" maxlength="100" required />
                         </div>
-                        <div class="input-field">
-                            <span class="input-label">Address 2</span>
+                        <div className="input-field">
+                            <span className="input-label">Address 2</span>
                             <input type="text" placeholder="Enter your address" maxlength="100" required />
                         </div>
-                        <div class="input-field">
-                            <span class="input-label">City</span>
+                        <div className="input-field">
+                            <span className="input-label">City</span>
                             <input type="text" placeholder="Enter your city" maxlength="100" required />
                         </div>
-                        <div class="input-field">
-                            <span class="input-label">State</span>
-                            <select class="dropdown" required>
+                        <div className="input-field">
+                            <span className="input-label">State</span>
+                            <select className="dropdown" required>
                                 <option value="" disabled selected>Select a state</option>
                                 <option value="AL">AL</option>
                                 <option value="AK">AK</option>
@@ -86,13 +86,13 @@ const Profile = () => {
                                 <option value="WY">WY</option>
                             </select>
                         </div>
-                        <div class="input-field">
-                            <span class="input-label">Zip Code</span>
+                        <div className="input-field">
+                            <span className="input-label">Zip Code</span>
                             <input type="text" placeholder="Enter your zipcode" minlength="5" maxlength="9" required />
                         </div>
                     </div>
-                    <div class="submit-button-wrapper">
-                        <input type="submit" class="submit-button" value="Continue" />
+                    <div className="submit-button-wrapper">
+                        <input type="submit" className="submit-button" value="Continue" />
                     </div>
                 </form>
             </div>

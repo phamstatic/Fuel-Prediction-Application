@@ -8,14 +8,14 @@ const Welcome = () => {
         <>
             <NavigationBar/>
             
-            <div class="container">
+            <div className="container">
                 <h2>Welcome</h2>
-                <div class="button">
+                <div className="button">
                     <Link to="/Login">
                         <a><input value="Login"/></a>
                     </Link>
                 </div>
-                <div class="button">
+                <div className="button">
                     <Link to="/Register">
                         <a><input value="Register"/></a>
                     </Link>
