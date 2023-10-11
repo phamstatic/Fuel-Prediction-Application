@@ -1,29 +1,36 @@
 import React from "react";
 import "../stylesheets/Home.css";
-import { NavLink as Link } from "react-router-dom";
+import { useHistory } from "react-router-dom"; 
 import NavigationBar from "../components/NavigationBar";
+import { register } from "../back-end/login.js";
+
 
 const Register = () => {
+    const history = useHistory();
+    const handleRegister = (username, password) => {
+        if (register(username, password)) {
+            history.push("/Login");
+        }
+    };
+
     return (
         <>
             <NavigationBar/>
-            <div class="container">
-                <div class="title">Register</div>
-                <form action="profile.html">
-                    <div class="input-group">
-                        <div class="input-field">
-                            <span class="input-label">Username</span>
-                            <input type="text" placeholder="Enter your username" required />
+            <div classNameName="container">
+                <div classNameName="title">Register</div>
+                <form>
+                    <div classNameName="input-group">
+                        <div classNameName="input-field">
+                            <span classNameName="input-label">Username</span>
+                            <input type="text" placeholder="Enter your username" id="username" required />
                         </div>
-                        <div class="input-field">
-                            <span class="input-label">Password</span>
-                            <input type="password" placeholder="Enter your password" required />
+                        <div classNameName="input-field">
+                            <span classNameName="input-label">Password</span>
+                            <input type="password" placeholder="Enter your password" id="password" required />
                         </div>
                     </div>
-                    <div class="submit-button-wrapper">
-                        <Link to="/">
-                            <input type="submit" class="submit-button" value="Register" />
-                        </Link>
+                    <div classNameName="submit-button-wrapper">
+                        <button type="button" onClick={() => handleRegister(document.getElementById('username').value, document.getElementById('password').value)}>Register</button>
                     </div>
                 </form>
             </div>
