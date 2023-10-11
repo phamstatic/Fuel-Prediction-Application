@@ -1,6 +1,6 @@
 import React from "react";
 import "../stylesheets/Home.css";
-import { NavLink as Link } from "react-router-dom";
+import { useHistory } from "react-router-dom"; 
 import NavigationBar from "../components/NavigationBar";
 import { useState } from "react";
 import axios from "axios";
@@ -27,7 +27,7 @@ const Login = () => {
           console.error(error);
         });
     }
-
+    
     return (
         <>            
             <NavigationBar/>

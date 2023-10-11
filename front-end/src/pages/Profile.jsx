@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../stylesheets/Home.css";
+import { useHistory } from "react-router-dom";
 import NavigationBar from "../components/NavigationBar";
+import { saveProfileDetails } from "../back-end/login.js"; 
+import { UserContext } from "../back-end/UserContext.js"
 
 const Profile = () => {
+    const history = useHistory();
+    const { currentUser } = useContext(UserContext); 
+    const handleSave = (fullName, address1, address2, city, state, zipcode) => {
+        saveProfileDetails(currentUser, fullName, address1, address2, city, state, zipcode);
+        history.push("/Quote");
+    };
+
     return (
         <>
             <NavigationBar/>
