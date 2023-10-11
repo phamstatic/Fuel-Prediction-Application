@@ -37,11 +37,11 @@ const Login = () => {
                     <div class="input-group">
                         <div class="input-field">
                             <span class="input-label">Username</span>
-                            <input type="text" placeholder="Enter your username" onChange={handleChange} required />
+                            <input id="username" name="username" type="text" placeholder="Enter your username" onChange={handleChange} required />
                         </div>
                         <div class="input-field">
                             <span class="input-label">Password</span>
-                            <input type="password" placeholder="Enter your password" onChange={handleChange} required />
+                            <input id="password" name="password" type="password" placeholder="Enter your password" onChange={handleChange} required />
                         </div>
                     </div>
                     <div class="submit-button-wrapper">
