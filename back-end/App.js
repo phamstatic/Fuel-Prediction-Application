@@ -7,5 +7,6 @@ app.use(bodyParser.json())
 
 // Modules
 app.use("/Login", require("./routes/Login"));
+app.use("/Example", require("./routes/Example"));
 
 module.exports = app;
