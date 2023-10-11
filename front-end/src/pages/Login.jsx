@@ -1,6 +1,5 @@
 import React from "react";
 import "../stylesheets/Home.css";
-import { useHistory } from "react-router-dom"; 
 import NavigationBar from "../components/NavigationBar";
 import { useState } from "react";
 import axios from "axios";

@@ -1,18 +1,10 @@
 import React from "react";
 import "../stylesheets/Home.css";
-import { useHistory } from "react-router-dom"; 
+import { NavLink as Link } from "react-router-dom";
 import NavigationBar from "../components/NavigationBar";
-import { register } from "../back-end/login.js";
 
 
 const Register = () => {
-    const history = useHistory();
-    const handleRegister = (username, password) => {
-        if (register(username, password)) {
-            history.push("/Login");
-        }
-    };
-
     return (
         <>
             <NavigationBar/>
