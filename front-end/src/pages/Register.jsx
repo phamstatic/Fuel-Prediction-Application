@@ -16,21 +16,23 @@ const Register = () => {
     return (
         <>
             <NavigationBar/>
-            <div classNameName="container">
-                <div classNameName="title">Register</div>
-                <form>
-                    <div classNameName="input-group">
-                        <div classNameName="input-field">
-                            <span classNameName="input-label">Username</span>
-                            <input type="text" placeholder="Enter your username" id="username" required />
+            <div className="container">
+                <div className="title">Register</div>
+                <form action="profile.html">
+                    <div className="input-group">
+                        <div className="input-field">
+                            <span className="input-label">Username</span>
+                            <input type="text" placeholder="Enter your username" required />
                         </div>
-                        <div classNameName="input-field">
-                            <span classNameName="input-label">Password</span>
-                            <input type="password" placeholder="Enter your password" id="password" required />
+                        <div className="input-field">
+                            <span className="input-label">Password</span>
+                            <input type="password" placeholder="Enter your password" required />
                         </div>
                     </div>
-                    <div classNameName="submit-button-wrapper">
-                        <button type="button" onClick={() => handleRegister(document.getElementById('username').value, document.getElementById('password').value)}>Register</button>
+                    <div className="submit-button-wrapper">
+                        <Link to="/">
+                            <input type="submit" className="submit-button" value="Register" />
+                        </Link>
                     </div>
                 </form>
             </div>

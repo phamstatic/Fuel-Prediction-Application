@@ -2,38 +2,50 @@ import React from "react";
 import "../stylesheets/Home.css";
 import { useHistory } from "react-router-dom"; 
 import NavigationBar from "../components/NavigationBar";
-import { login, firstTimeLogin } from "../back-end/login.js";
-
+import { useState } from "react";
+import axios from "axios";
 const Login = () => {
-    const history = useHistory();
-    const handleLogin = (username, password) => {
-        if (login(username, password)) { 
-            if (firstTimeLogin[username]) {
-                history.push("/Profile");
-            } else {
-                history.push("/Quote");
-            }
-        }
-    };
-
+    
+    const port = 8000;
+    const [formData, setFormData] = useState();
+  
+    const handleChange = (event) => {
+      setFormData({
+        ...formData,
+        [event.target.name]: event.target.value
+      });
+    }
+  
+    const loginForm = (event) => {
+      event.preventDefault();
+  
+      axios.post(`http://localhost:${port}/Login`, formData)
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+    
     return (
         <>            
             <NavigationBar/>
-            <div class="container">
-                <div class="title">Login</div>
-                <form>
-                    <div class="input-group">
-                        <div class="input-field">
-                            <span class="input-label">Username</span>
-                            <input type="text" placeholder="Enter your username" id="username" required />
+            <div className="container">
+                <div className="title">Login</div>
+                <form id="login" onSubmit={loginForm}> 
+                    <div className="input-group">
+                        <div className="input-field">
+                            <span className="input-label">Username</span>
+                            <input id="username" name="username" type="text" placeholder="Enter your username" onChange={handleChange} required />
                         </div>
-                        <div class="input-field">
-                            <span class="input-label">Password</span>
-                            <input type="password" placeholder="Enter your password" id="password" required />
+                        <div className="input-field">
+                            <span className="input-label">Password</span>
+                            <input id="password" name="password" type="password" placeholder="Enter your password" onChange={handleChange} required />
                         </div>
                     </div>
-                    <div class="submit-button-wrapper">
-                        <button type="button" onClick={() => handleLogin(document.getElementById('username').value, document.getElementById('password').value)}>Login</button>
+                    <div className="submit-button-wrapper">
+                        <input type="submit" className="submit-button" value="Login" />
                      </div>
                 </form>
             </div>
