@@ -30,6 +30,7 @@ const Register = () => {
         });
         console.log("Redirecting...");
         navigate("/");
+        alert("Successfully registered!"); // Need to change this later on to be cooler.
     }
 
     return (
