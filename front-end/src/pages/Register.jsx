@@ -3,6 +3,7 @@ import "../stylesheets/Home.css";
 import NavigationBar from "../components/NavigationBar";
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
 
@@ -15,6 +16,8 @@ const Register = () => {
       });
     }
   
+    const navigate = useNavigate();
+
     const RegisterForm = (event) => {
       event.preventDefault();
       axios.post(`http://localhost:${port}/Register`, formData)
@@ -24,6 +27,8 @@ const Register = () => {
         .catch((error) => {
           console.error(error);
         });
+        console.log("Redirecting...");
+        navigate("/");
     }
 
     return (
