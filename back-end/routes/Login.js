@@ -22,9 +22,9 @@ router.get('/', async(req, res) => {
 })
 
 router.post('/', async (req, res) => { 
-    let login = req.body;
-    console.log(login);
-    Authentication(login.username, login.password); 
+    let user = req.body;
+    console.log(user);
+    Authentication(user.username, user.password); 
 });
 
 module.exports = router;
