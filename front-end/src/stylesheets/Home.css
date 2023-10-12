@@ -6,6 +6,16 @@
   font-family: 'Poppins', sans-serif;
 }
 
+.back {
+  color: black;
+  align-self:first baseline;
+  text-decoration: none;
+}
+
+.back:hover {
+  text-decoration: underline;
+}
+
 body {
   height: 100vh;
   display: flex;

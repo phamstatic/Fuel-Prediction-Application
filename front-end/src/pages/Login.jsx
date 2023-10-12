@@ -3,6 +3,9 @@ import "../stylesheets/Home.css";
 import NavigationBar from "../components/NavigationBar";
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { NavLink as Link } from "react-router-dom";
+
 const Login = () => {
     
     const port = 8000;
@@ -31,6 +34,7 @@ const Login = () => {
         <>            
             <NavigationBar/>
             <div className="container">
+                <Link to="/" className="back">Back</Link>
                 <div className="title">Login</div>
                 <form id="login" onSubmit={loginForm}> 
                     <div className="input-group">

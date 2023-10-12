@@ -4,6 +4,7 @@ import NavigationBar from "../components/NavigationBar";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { NavLink as Link } from "react-router-dom";
 
 const Register = () => {
 
@@ -35,6 +36,7 @@ const Register = () => {
         <>
             <NavigationBar/>
             <div className="container">
+              <Link to="/" className="back">Back</Link>
                 <div className="title">Register</div>
                 <form id="register" onSubmit={RegisterForm}>
                     <div className="input-group">
