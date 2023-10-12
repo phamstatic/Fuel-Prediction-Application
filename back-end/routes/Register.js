@@ -5,6 +5,7 @@ router.get('/', async(req, res) => {
     res.send("GET HANDLER for /REGISTER route");
 })
 
+// Need a way to add user login information to save and verify.
 router.post('/', async (req, res) => { 
     let user = req.body;
     console.log(user);
