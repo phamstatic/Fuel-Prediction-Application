@@ -1,7 +1,7 @@
 import React from "react";
 import "../stylesheets/Home.css";
 import NavigationBar from "../components/NavigationBar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { NavLink as Link } from "react-router-dom";
@@ -10,7 +10,8 @@ const Login = () => {
     
     const port = 8000;
     const [formData, setFormData] = useState();
-  
+    const navigate = useNavigate();
+
     const handleChange = (event) => {
       setFormData({
         ...formData,
@@ -23,13 +24,27 @@ const Login = () => {
   
       axios.post(`http://localhost:${port}/Login`, formData)
         .then((response) => {
-          console.log(response.data);
+          console.log(response.data.message);
+          if (response.data.firstLogin) {
+            navigate("/Profile",{state:{id:formData.username}})
+          } else {
+            navigate("/Quote",{state:{id:formData.username}})
+          }
         })
         .catch((error) => {
           console.error(error);
-        });
+        }); 
+        userAuthentication();
     }
-    
+    async function userAuthentication() {
+      try {
+          const response = await axios.get(`http://localhost:${port}/Login`);
+          console.log(response.data);
+      }
+      catch (error) {
+          console.log(error);
+      }
+  } 
     return (
         <>            
             <NavigationBar/>
