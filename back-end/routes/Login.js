@@ -2,8 +2,14 @@ var express = require('express');
 var router = express.Router();
 
 const users = {
-    "admin" : "password",
-    "john" : "pham"
+    "admin": {
+        "password": "password",
+        "firstLogin": true
+    },
+    "john": {
+        "password": "pham",
+        "firstLogin": true
+    }
 }
 
 const Authentication = (username, password) => {
@@ -11,20 +17,37 @@ const Authentication = (username, password) => {
     if (Object.keys(users).includes(username)) {
         if (Object.values === password) {
             console.log(`User ${username} is validated!`);  
-            return true;
+            const firstLogin = users[username].firstLogin;
+            users[username].firstLogin = false;
+            return {
+                authenticated: true,
+                firstLogin: firstLogin
+            };
         }
     }
-    return false;
+    return {
+        authenticated: false 
+    };
 }
 
 router.get('/', async(req, res) => {
-    res.send("GET HANDLER for /Login route");
+    res.send("test message"); 
 })
 
 router.post('/', async (req, res) => { 
     let user = req.body;
     console.log(user);
-    Authentication(user.username, user.password); 
+    let result = Authentication(user.username, user.password); 
+    if(result.authenticated){
+        res.status(200).send({
+            message: "Login Successful",
+            firstLogin: result.firstLogin
+        });    
+    } else{
+        res.status(401).send({
+            message: "Invalid Credentials"
+        });
+    }
 });
 
 module.exports = router;
