@@ -1,24 +1,53 @@
 import React from "react";
 import "../stylesheets/Quote.css";
 import NavigationBar from "../components/NavigationBar";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { NavLink as Link } from "react-router-dom";
 
 const History = () => {
+    const port = 8000;
+    const [orders, setOrders] = useState([]);
+
+    async function getHistory() {
+        try {
+            const response = await axios.get(`http://localhost:${port}/History`);
+            console.log(response);
+            setOrders(response.data);
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
+    
     return (
         <>
-        
             <NavigationBar/>
             <div className="container">
-                {/*<div className="title">Fuel Quote History</div>*/}
                 
                 <table>
                         <caption>Fuel Quote History</caption>
-                    <tr>
-                        <th>#</th>
-                        <th>Fuel Amount (G)</th>
-                        <th>Profit Margin (%)</th>
-                        <th>Address</th>
-                        <th>Date</th>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Fuel Amount (G)</th>
+                            <th>Profit Margin (%)</th>
+                            <th>Total Cost ($)</th>
+                            <th>Address</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {orders.map(order => (
+                            console.log(order.id),
+                            <tr key={order.id}>
+                            <td>{order.id}</td>
+                            <td>{order.name}</td>
+                            <td>{order.date}</td>
+                            </tr>
+                        ))}
+                    </tbody>
                 </table>
                 <br/>
                 <section id="Search">
