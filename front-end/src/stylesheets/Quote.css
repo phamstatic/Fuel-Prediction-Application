@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -27,7 +28,6 @@ p{
   align-items: center;
   justify-content: center;
 }
-
 .container .title {
   font-size: 25px;
   font-weight: 500;
@@ -39,8 +39,7 @@ p{
 table, th, td {
     border: 2px solid gray;
   }
-
-caption{
+  caption{
     font-weight: bold;
     font-size: 25px;
 }
@@ -48,6 +47,11 @@ caption{
 th{
     font-size: 18px;
     padding: 2px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
 label{
