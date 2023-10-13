@@ -1,5 +1,5 @@
 import React from "react";
-import "../stylesheets/Quote.css";
+import "../stylesheets/History.css";
 import NavigationBar from "../components/NavigationBar";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -24,32 +24,33 @@ const History = () => {
         <>
             <NavigationBar/>
             <div className="container">
-                
-                <table>
+                <div class="tableFixHead">
+                    <table>
                         <caption>Fuel Quote History</caption>
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Fuel Amount (G)</th>
-                            <th>Profit Margin (%)</th>
-                            <th>Total Cost ($)</th>
-                            <th>Address</th>
-                            <th>Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {orders.map(order => (
-                            <tr key={order.id}>
-                                <td>{order.id}</td>
-                                <td>{order.fuelAmount} G</td>
-                                <td>{order.profitMargin * 100}%</td>
-                                <td>${order.totalCost}</td>
-                                <td>{order.address}</td>
-                                <td>{order.date}</td>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Fuel Amount (G)</th>
+                                <th>Profit Margin (%)</th>
+                                <th>Total Cost ($)</th>
+                                <th>Address</th>
+                                <th>Date</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            {orders.map(order => (
+                                <tr key={order.id}>
+                                    <td>{order.id}</td>
+                                    <td>{order.fuelAmount} G</td>
+                                    <td>{order.profitMargin * 100}%</td>
+                                    <td>${order.totalCost}</td>
+                                    <td>{order.address}</td>
+                                    <td>{order.date}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
                 <br/>
                 <section id="Search">
                 <form action = "history.jsx" method = "POST">
