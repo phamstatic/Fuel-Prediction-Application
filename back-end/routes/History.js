@@ -53,7 +53,7 @@ const orders = [
   {
       id: 7,
       fuelAmount: 98,
-      profitMargin: 0.140,
+      profitMargin: 0.14,
       totalCost: 76543.21,
       address: "1010 Birch Avenue, Star City, USA",
       date: "2001-10-25",
@@ -90,7 +90,17 @@ router.get('/', async(req, res) => {
 })
 
 router.post('/', async (req, res) => { 
-    //console.log(orders[1].fuelAmount);
+  console.log("PING");
+  let criteria = req.body;
+  console.log(criteria);
+  let response = "Searching by ";
+  if(criteria.gallonCheck){
+    response += "gallons (between " + gallonMin + " and " + gallonMax + ") ";
+  }
+  console.log("READING");
+  res.send({
+    message: "READING"
+  });
 });
 
 module.exports = router;
