@@ -3,36 +3,97 @@ import "../stylesheets/Home.css";
 import NavigationBar from "../components/NavigationBar";
 
 const Profile = () => {
+        
+    const port = 8000;
+    const [formData, setFormData] = useState();
+  
+    const handleChange = (event) => {
+      setFormData({
+        ...formData,
+        [event.target.name]: event.target.value
+      });
+    }
+  
+    const ProfileForm = (event) => {
+      event.preventDefault();
+
+        if (fullName.length > 50) {
+          alert("fullName should be less than 50 characters!");
+        }
+        else if (addressOne.length > 100) {
+          alert("Address 1 should be less than 100 characters!");
+        }
+        else if (addressTwo.length > 100) {
+            alert("Address 2 should be less than 100 characters!");
+        }
+        else if (city.length > 100) {
+            alert("City should be less than 100 characters!");
+        }
+        else if (State.length > 2) {
+            alert("State should be less than 2 characters!");
+        }
+        else if (Zipcode.length > 4 && Zipcode.length <9) {
+            alert("Zipcode should be between 5 to 9 digits ");
+        }
+
+        else {
+          alert("Validated!");
+          axios.post(`http://localhost:${port}/Login`, formData)
+            .then((response) => {
+              console.log(response.data.message);
+              if (response.data.firstLogin) {
+                navigate("/Profile",{state:{id:formData.username}})
+              } else {
+                navigate("/Quote",{state:{id:formData.username}})
+              }
+            })
+            .catch((error) => {
+              console.error(error);
+            }); 
+            userAuthentication();
+        }
+  
+
+  
+      axios.post(`http://localhost:${port}/Profile`, formData)
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+
 
     return (
         <>
             <NavigationBar/>
             <div className="container">
                 <div className="title">Profile</div>
-                <form action="fuel.html">
+                <form id="Profile" onSubmit={ProfileForm}> 
                     <div className="input-group">
                         <div className="input-field">
                             <span className="input-label">Full Name</span>
-                            <input type="text" placeholder="Enter your full name" maxlength="50" required />
+                            <input id= "name" name = "name" type="text" placeholder="Enter your full name" maxlength="50" onChange={handleChange} required />
                         </div>
                         <div className="input-field">
                             <span className="input-label"></span>
                         </div>
                         <div className="input-field">
                             <span className="input-label">Address 1</span>
-                            <input type="text" placeholder="Enter your address" maxlength="100" required />
+                            <input id = "address1" name = "address1" type="text" placeholder="Enter your address" maxlength="100" onChange={handleChange} required  />
                         </div>
                         <div className="input-field">
                             <span className="input-label">Address 2</span>
-                            <input type="text" placeholder="Enter your address" maxlength="100" required />
+                            <input id ="address2" name = "address2" type="text" placeholder="Enter your address" maxlength="100" onChange={handleChange} required />
                         </div>
                         <div className="input-field">
                             <span className="input-label">City</span>
-                            <input type="text" placeholder="Enter your city" maxlength="100" required />
+                            <input id = "city" name = "city" type="text" placeholder="Enter your city" maxlength="100" onChange={handleChange} required />
                         </div>
                         <div className="input-field">
                             <span className="input-label">State</span>
-                            <select className="dropdown" required>
+                            <select id = "state" name = "state" className="dropdown" onChange={handleChange} required>
                                 <option value="" disabled selected>Select a state</option>
                                 <option value="AL">AL</option>
                                 <option value="AK">AK</option>
@@ -89,7 +150,7 @@ const Profile = () => {
                         </div>
                         <div className="input-field">
                             <span className="input-label">Zip Code</span>
-                            <input type="text" placeholder="Enter your zipcode" minlength="5" maxlength="9" required />
+                            <input id = "zip" name = "zip" type="text" placeholder="Enter your zipcode" minlength="5" maxlength="9" onChange={handleChange} required />
                         </div>
                     </div>
                     <div className="submit-button-wrapper">
