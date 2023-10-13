@@ -10,17 +10,16 @@ const History = () => {
     const port = 8000;
     const [orders, setOrders] = useState([]);
 
-    async function getHistory() {
-        try {
-            const response = await axios.get(`http://localhost:${port}/History`);
-            console.log(response);
-            setOrders(response.data);
-        }
-        catch (error) {
-            console.log(error);
-        }
-    }
-    
+    useEffect(() => {
+    axios.get(`http://localhost:${port}/History`) // ')//
+      .then(response => {
+        setOrders(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  }, []);
+
     return (
         <>
             <NavigationBar/>
@@ -40,11 +39,13 @@ const History = () => {
                     </thead>
                     <tbody>
                         {orders.map(order => (
-                            console.log(order.id),
                             <tr key={order.id}>
-                            <td>{order.id}</td>
-                            <td>{order.name}</td>
-                            <td>{order.date}</td>
+                                <td>{order.id}</td>
+                                <td>{order.fuelAmount} G</td>
+                                <td>{order.profitMargin * 100}%</td>
+                                <td>${order.totalCost}</td>
+                                <td>{order.address}</td>
+                                <td>{order.date}</td>
                             </tr>
                         ))}
                     </tbody>
