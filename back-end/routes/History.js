@@ -86,7 +86,7 @@ const orders = [
 
 
 router.get('/', async(req, res) => {
-    res.json(orders);
+    res.status(200).send(orders);
 })
 
 module.exports = router;

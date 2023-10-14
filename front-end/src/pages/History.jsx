@@ -47,7 +47,7 @@ const History = () => {
         <>
             <NavigationBar/>
             <div className="container">
-                <div class="tableFixHead">
+                <div className="tableFixHead">
                     <table>
                         <caption>Fuel Quote History</caption>
                         <thead>

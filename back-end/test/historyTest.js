@@ -9,7 +9,7 @@ describe('GET /orders', () => {
   it('1. Should Return an Array of Orders', (done) => {
     chai
       .request(app)
-      .get('/orders')
+      .get('/History')
       .end((err, res) => {
         expect(res).to.have.status(200);
         expect(res.body).to.be.an('array');

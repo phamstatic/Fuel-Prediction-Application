@@ -9,13 +9,13 @@ class FuelQuoteModule {
         this.suggestedPrice = 0; 
     }
     createQuote() {
-        let suggestedPrice = 0;
-        return suggestedPrice;
+        this.suggestedPrice = 0;
+        return this.suggestedPrice;
     }
 }
 
 router.get('/', async(req, res) => {
-    res.send(quote.createQuote);
+    res.status(200).send(quote.createQuote);
 })
 
 router.post('/', async (req, res) => { 
@@ -25,3 +25,4 @@ router.post('/', async (req, res) => {
 });
 
 module.exports = router;
+module.exports = FuelQuoteModule;

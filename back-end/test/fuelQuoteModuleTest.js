@@ -1,6 +1,7 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const app = require('../App'); // Replace with your app file
+const app = require('../App');
+const FuelQuoteModule = require('../routes/FuelQuoteModule.js');
 const expect = chai.expect;
 
 chai.use(chaiHttp);
