@@ -25,13 +25,15 @@ const Login = () => {
       axios.post(`http://localhost:${port}/Login`, formData)
         .then((response) => {
           console.log(response.data.message);
+          alert(response.data.message);
           if (response.data.firstLogin) {
-            navigate("/Quote",{state:{id:formData.username}})
-          } else {
             navigate("/Profile",{state:{id:formData.username}})
+          } else {
+            navigate("/Quote",{state:{id:formData.username}})
           }
         })
         .catch((error) => {
+          alert("Invalid Credentials!");
           console.error('Error fetching data:', error);
         }); 
         userAuthentication();
