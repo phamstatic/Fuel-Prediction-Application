@@ -8,6 +8,7 @@ app.use(bodyParser.json())
 // Modules
 app.use("/Login", require("./routes/Login"));
 app.use("/Register", require("./routes/Register"));
+app.use("/Profile", require("./routes/Profile"));
 app.use("/FuelQuoteModule", require("./routes/FuelQuoteModule"));
 app.use("/History", require("./routes/History"));
 

@@ -1,38 +1,91 @@
 import React, { useContext } from "react";
 import "../stylesheets/Home.css";
 import NavigationBar from "../components/NavigationBar";
+import { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { NavLink as Link } from "react-router-dom";
 
 const Profile = () => {
+        
+    const port = 8000;
+    const [formData, setFormData] = useState();
+  
+    const handleChange = (event) => {
+      setFormData({
+        ...formData,
+        [event.target.name]: event.target.value
+      });
+    }
+  
+    const navigate = useNavigate();
+
+    const ProfileForm = (event) => {
+      event.preventDefault();
+      
+        if (formData.fullName.length > 50) {
+          alert("Full Name should be less than 50 characters!");
+        }
+        else if (formData.address1.length > 100) {
+          alert("Address 1 should be less than 100 characters!");
+        }
+        else if (formData.address2.length > 100) {
+            alert("Address 2 should be less than 100 characters!");
+        }
+        else if (formData.city.length > 100) {
+            alert("City should be less than 100 characters!");
+        }
+        else if (formData.state.length > 2) {
+            alert("State should be less than 2 characters!");
+        }
+        else if (formData.zip.length < 4 || formData.zip.length > 9) {
+            alert("Zipcode should be between 5 to 9 digits ");
+        }
+
+        else {
+          alert("Validated!");
+          axios.post(`http://localhost:${port}/Profile`, formData)
+            .then((response) => {
+              console.log(response.data.message);
+              navigate("/Quote")
+            })
+            .catch((error) => {
+              console.error(error);
+            }); 
+        }
+  
+    }
+
 
     return (
         <>
             <NavigationBar/>
             <div className="container">
                 <div className="title">Profile</div>
-                <form action="fuel.html">
+                <form id="profile" onSubmit={ProfileForm}> 
                     <div className="input-group">
                         <div className="input-field">
                             <span className="input-label">Full Name</span>
-                            <input type="text" placeholder="Enter your full name" maxlength="50" required />
+                            <input id= "fullName" name = "fullName" type="text" placeholder="Enter your full name" maxlength="50" onChange={handleChange} required />
                         </div>
                         <div className="input-field">
                             <span className="input-label"></span>
                         </div>
                         <div className="input-field">
                             <span className="input-label">Address 1</span>
-                            <input type="text" placeholder="Enter your address" maxlength="100" required />
+                            <input id = "address1" name = "address1" type="text" placeholder="Enter your address" maxlength="100" onChange={handleChange} required  />
                         </div>
                         <div className="input-field">
                             <span className="input-label">Address 2</span>
-                            <input type="text" placeholder="Enter your address" maxlength="100" required />
+                            <input id ="address2" name = "address2" type="text" placeholder="Enter your address" maxlength="100" onChange={handleChange} required />
                         </div>
                         <div className="input-field">
                             <span className="input-label">City</span>
-                            <input type="text" placeholder="Enter your city" maxlength="100" required />
+                            <input id = "city" name = "city" type="text" placeholder="Enter your city" maxlength="100" onChange={handleChange} required />
                         </div>
                         <div className="input-field">
                             <span className="input-label">State</span>
-                            <select className="dropdown" required>
+                            <select id = "state" name = "state" className="dropdown" onChange={handleChange} required>
                                 <option value="" disabled selected>Select a state</option>
                                 <option value="AL">AL</option>
                                 <option value="AK">AK</option>
@@ -89,7 +142,7 @@ const Profile = () => {
                         </div>
                         <div className="input-field">
                             <span className="input-label">Zip Code</span>
-                            <input type="text" placeholder="Enter your zipcode" minlength="5" maxlength="9" required />
+                            <input id = "zip" name = "zip" type="text" placeholder="Enter your zipcode" minlength="5" maxlength="9" onChange={handleChange} required />
                         </div>
                     </div>
                     <div className="submit-button-wrapper">
