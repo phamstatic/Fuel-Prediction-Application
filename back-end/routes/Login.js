@@ -15,13 +15,14 @@ const users = {
 const Authentication = (username, password) => {
     console.log(`user: ${username}, password: ${password}`)
     if (Object.keys(users).includes(username)) {
-        if (Object.values === password) {
-            console.log(`User ${username} is validated!`);  
+        if (users[username].password === password) {
+            console.log(`User ${username} is validated!`);
+            const user = { ...users[username] };  
             const firstLogin = users[username].firstLogin;
-            users[username].firstLogin = false;
+            user.firstLogin = false;
             return {
                 authenticated: true,
-                firstLogin: firstLogin
+                firstLogin: user.firstLogin
             };
         }
     }

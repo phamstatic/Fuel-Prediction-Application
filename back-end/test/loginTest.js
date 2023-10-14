@@ -1,15 +1,18 @@
 const app = require("../App");
 const chai = require('chai');
 const chaiHttp = require('chai-http');
+chai.use(chaiHttp);
 const expect = chai.expect;
 
-chai.use(chaiHttp);
+const Authentication = require('../routes/Login.js');
+
+
 
 describe('Authentication', () => {
   it('1. Should Authenticate a Valid User', () => {
     const result = Authentication('john', 'pham');
     expect(result.authenticated).to.equal(true);
-    expect(result.firstLogin).to.equal(true); // Since it's the first login
+    expect(result.firstLogin).to.equal(true);
   });
 
   it('2. Should Reject Invalid Credentials', () => {
