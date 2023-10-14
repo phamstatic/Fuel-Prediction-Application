@@ -18,6 +18,8 @@ const Profile = () => {
       });
     }
   
+    const navigate = useNavigate();
+
     const ProfileForm = (event) => {
       event.preventDefault();
       
@@ -45,7 +47,7 @@ const Profile = () => {
           axios.post(`http://localhost:${port}/Profile`, formData)
             .then((response) => {
               console.log(response.data.message);
-                navigate("/Quote",{state:{id:formData.username}});
+              navigate("/Quote")
             })
             .catch((error) => {
               console.error(error);
