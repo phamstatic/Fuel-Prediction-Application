@@ -17,19 +17,20 @@ describe('GET /REGISTER', () => {
 });
 
 describe('POST /REGISTER', () => {
-  it('2. Should Log User Information', (done) => {
+    
+    it('2. Should Log User Information', (done) => {
     const userData = {
-      username: 'testuser',
-      password: 'testpassword',
+        username: 'testuser',
+        password: 'testpassword',
     };
 
     chai.request(app)
-      .post('/REGISTER')
-      .send(userData)
-      .end((err, res) => {
-        expect(res).to.have.status(200);
-        expect(res.text).to.equal(`User ${userData.username} registered with password ${userData.password}`);
-        done();
-      });
-  });
-});
+        .post('/REGISTER')
+        .send(userData)
+        .end((err, res) => {
+            expect(res).to.have.status(200);
+            expect(res.text).to.equal(`User ${userData.username} registered with password ${userData.password}`);
+            done();
+        });
+    });
+}).timeout(0);

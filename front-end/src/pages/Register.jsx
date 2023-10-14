@@ -23,7 +23,7 @@ const Register = () => {
       event.preventDefault();
       axios.post(`http://localhost:${port}/Register`, formData)
         .then((response) => {
-          console.log(response.data);
+          console.log(response.data.message);
         })
         .catch((error) => {
           console.error(error);

@@ -10,6 +10,7 @@ router.post('/', async (req, res) => {
     let user = req.body;
     console.log(user);
     console.log(`User ${user.username} registered with password ${user.password}`);
+    res.status(200).send(`User ${user.username} registered with password ${user.password}`);
 });
 
 module.exports = router;
