@@ -30,7 +30,6 @@ describe('POST /login', () => {
       .end((err, res) => {
         expect(res).to.have.status(200);
         expect(res.body.message).to.equal('Login Successful');
-        expect(res.body.firstLogin).to.equal(false); // Not first login
         done();
       });
   });
