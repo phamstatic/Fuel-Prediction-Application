@@ -38,7 +38,7 @@ const Profile = () => {
         else if (formData.state.length > 2) {
             alert("State should be less than 2 characters!");
         }
-        else if (formData.zip.length > 4 && formData.zip.length <9) {
+        else if (formData.zip.length < 4 || formData.zip.length > 9) {
             alert("Zipcode should be between 5 to 9 digits ");
         }
 
@@ -54,15 +54,6 @@ const Profile = () => {
             }); 
         }
   
-
-  
-      axios.post(`http://localhost:${port}/Profile`, formData)
-        .then((response) => {
-          console.log(response.data);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
     }
 
 
@@ -75,7 +66,7 @@ const Profile = () => {
                     <div className="input-group">
                         <div className="input-field">
                             <span className="input-label">Full Name</span>
-                            <input id= "name" name = "name" type="text" placeholder="Enter your full name" maxlength="50" onChange={handleChange} required />
+                            <input id= "fullName" name = "fullName" type="text" placeholder="Enter your full name" maxlength="50" onChange={handleChange} required />
                         </div>
                         <div className="input-field">
                             <span className="input-label"></span>
