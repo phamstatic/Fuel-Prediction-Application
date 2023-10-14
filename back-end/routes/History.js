@@ -89,18 +89,4 @@ router.get('/', async(req, res) => {
     res.json(orders);
 })
 
-router.post('/', async (req, res) => { 
-  console.log("PING");
-  let criteria = req.body;
-  console.log(criteria);
-  let response = "Searching by ";
-  if(criteria.gallonCheck){
-    response += "gallons (between " + gallonMin + " and " + gallonMax + ") ";
-  }
-  console.log("READING");
-  res.send({
-    message: "READING"
-  });
-});
-
 module.exports = router;
