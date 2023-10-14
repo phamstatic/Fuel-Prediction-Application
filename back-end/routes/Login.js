@@ -8,30 +8,36 @@ const users = {
     },
     "john": {
         "password": "pham",
-        "firstLogin": true
+        "firstLogin": false
     }
 }
 
 const Authentication = (username, password) => {
     console.log(`user: ${username}, password: ${password}`)
-    if (Object.keys(users).includes(username)) {
-        if (Object.values === password) {
-            console.log(`User ${username} is validated!`);  
-            const firstLogin = users[username].firstLogin;
-            users[username].firstLogin = false;
-            return {
-                authenticated: true,
-                firstLogin: firstLogin
-            };
-        }
+    if (!users[username]) {
+        console.log(`User ${username} is invalid!`);
+        return {
+            authenticated: false 
+        };
     }
+    if (users[username].password !== password) {
+        console.log(`Password ${password} is invalid!`);
+        return {
+            authenticated: false 
+        };
+    }
+    console.log(`User ${username} and Password ${password} is validated!`);  
+    const firstLogin = users[username].firstLogin;
+    users[username].firstLogin = false;
     return {
-        authenticated: false 
+        authenticated: true,
+        firstLogin: firstLogin
     };
 }
 
+
 router.get('/', async(req, res) => {
-    res.send("test message"); 
+    res.send(users); 
 })
 
 router.post('/', async (req, res) => { 

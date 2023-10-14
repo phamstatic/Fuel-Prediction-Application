@@ -26,13 +26,13 @@ const Login = () => {
         .then((response) => {
           console.log(response.data.message);
           if (response.data.firstLogin) {
-            navigate("/Profile",{state:{id:formData.username}})
-          } else {
             navigate("/Quote",{state:{id:formData.username}})
+          } else {
+            navigate("/Profile",{state:{id:formData.username}})
           }
         })
         .catch((error) => {
-          console.error(error);
+          console.error('Error fetching data:', error);
         }); 
         userAuthentication();
     }
