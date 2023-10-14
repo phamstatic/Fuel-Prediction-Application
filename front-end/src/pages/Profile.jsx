@@ -1,6 +1,10 @@
 import React, { useContext } from "react";
 import "../stylesheets/Home.css";
 import NavigationBar from "../components/NavigationBar";
+import { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { NavLink as Link } from "react-router-dom";
 
 const Profile = () => {
         
@@ -16,41 +20,36 @@ const Profile = () => {
   
     const ProfileForm = (event) => {
       event.preventDefault();
-
-        if (fullName.length > 50) {
-          alert("fullName should be less than 50 characters!");
+      
+        if (formData.fullName.length > 50) {
+          alert("Full Name should be less than 50 characters!");
         }
-        else if (addressOne.length > 100) {
+        else if (formData.address1.length > 100) {
           alert("Address 1 should be less than 100 characters!");
         }
-        else if (addressTwo.length > 100) {
+        else if (formData.address2.length > 100) {
             alert("Address 2 should be less than 100 characters!");
         }
-        else if (city.length > 100) {
+        else if (formData.city.length > 100) {
             alert("City should be less than 100 characters!");
         }
-        else if (State.length > 2) {
+        else if (formData.state.length > 2) {
             alert("State should be less than 2 characters!");
         }
-        else if (Zipcode.length > 4 && Zipcode.length <9) {
+        else if (formData.zip.length > 4 && formData.zip.length <9) {
             alert("Zipcode should be between 5 to 9 digits ");
         }
 
         else {
           alert("Validated!");
-          axios.post(`http://localhost:${port}/Login`, formData)
+          axios.post(`http://localhost:${port}/Profile`, formData)
             .then((response) => {
               console.log(response.data.message);
-              if (response.data.firstLogin) {
-                navigate("/Profile",{state:{id:formData.username}})
-              } else {
-                navigate("/Quote",{state:{id:formData.username}})
-              }
+                navigate("/Quote",{state:{id:formData.username}});
             })
             .catch((error) => {
               console.error(error);
             }); 
-            userAuthentication();
         }
   
 
@@ -70,7 +69,7 @@ const Profile = () => {
             <NavigationBar/>
             <div className="container">
                 <div className="title">Profile</div>
-                <form id="Profile" onSubmit={ProfileForm}> 
+                <form id="profile" onSubmit={ProfileForm}> 
                     <div className="input-group">
                         <div className="input-field">
                             <span className="input-label">Full Name</span>

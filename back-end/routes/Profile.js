@@ -14,18 +14,21 @@ class profile {
         return this.name + ',' +this.address + ',' + this.city + ',' + this.state + ',' + this.zip;
     }
 }
-const clients = [];
+test = new profile("Alex","Street","Street2","Houston","TX","12345");
+const clients = []
+clients.push(test);
+
 
 
 router.get('/', async(req, res) => {
-    res.send('GET HANDLER for /Profile route')
+    res.send('GET HANDLER for /Profile route');
 })
 
 router.post('/', async (req, res) => { 
     let user = req.body;
-    console.log(user)
-    const client = new profile(user.name,user.address1,user.address2,user.city,user.state,user.zip)
-    clients.push(client)
+    console.log(user);
+    const client = new profile(user.fullName,user.address1,user.address2,user.city,user.state,user.zip);
+    clients.push(client);
 });
 
 module.exports = router;
