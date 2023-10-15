@@ -1,10 +1,8 @@
-import React, { useContext } from "react";
-import "../stylesheets/Home.css";
-import NavigationBar from "../components/NavigationBar";
-import { useState } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { NavLink as Link } from "react-router-dom";
+import "../stylesheets/Home.css";
+import axios from "axios";
+import NavigationBar from "../components/NavigationBar";
 
 const Profile = () => {
         

@@ -1,10 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
+import { NavLink as Link, useNavigate } from "react-router-dom";
 import "../stylesheets/Home.css";
-import NavigationBar from "../components/NavigationBar";
-import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { NavLink as Link } from "react-router-dom";
+import NavigationBar from "../components/NavigationBar";
 
 const Register = () => {
 

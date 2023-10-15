@@ -1,10 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../stylesheets/History.css";
-import NavigationBar from "../components/NavigationBar";
-import { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { NavLink as Link } from "react-router-dom";
+import NavigationBar from "../components/NavigationBar";
 
 const History = () => {
     const port = 8000;
