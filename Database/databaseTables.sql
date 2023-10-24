@@ -23,3 +23,5 @@ CREATE TABLE "fuelQuote"(
     "delivDate" VARCHAR,
     "suggPrice" DECIMAL(10,2)
 )
+ALTER table "client" ADD FOREIGN key ("username") REFERENCES "login" ("username");
+ALTER table "fuelQuote" ADD FOREIGN key ("username") REFERENCES "login" ("username");
