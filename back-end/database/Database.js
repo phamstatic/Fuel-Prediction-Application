@@ -13,12 +13,4 @@ connection.connect((err => {
     console.log('MySQL Connected');
 }));
 
-let username = "ligma";
-let sql = `SELECT * FROM login WHERE username = '${username}';`;
-connection.query(sql, (err, result) => {
-    if (err) throw err;
-    console.log(result[0].username);
-});
-
-connection.end()
-
+module.exports = connection;
