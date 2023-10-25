@@ -26,7 +26,7 @@ describe('Fuel Quote Module', () => {
         .get('/')
         .end((err, res) => {
           expect(res).to.have.status(200);
-          expect(res.body.suggestedPrice).to.equal(0); // Change this based on your response structure
+          expect(res.body.suggestedPrice).to.equal(0);
           done();
         });
     });
