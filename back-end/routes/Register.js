@@ -22,7 +22,7 @@ AddUser = (username, password) => {
     `;
     connection.query(sql, (err, result) => {
         if (err) throw err;
-        PrintAll();
+        PrintAll(); // Remove this later on.
     });
 }
 
@@ -34,11 +34,15 @@ router.post('/', async (req, res) => {
             (err, result) => {
                 if (err) throw err;
                 else if (result.length > 0) { // The username is taken
-                    console.log("username taken");
+                    res.send({
+                        message: "Username already taken!"
+                    })
                 }
                 else { // The username is not taken
-                    console.log("username not taken");
                     AddUser(user.username, user.password);
+                    res.status(200).send({
+                        message: "Successfully registered!"
+                    });
                 }
             }
         )

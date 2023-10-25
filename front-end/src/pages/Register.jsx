@@ -22,13 +22,12 @@ const Register = () => {
       axios.post(`http://localhost:${port}/Register`, formData)
         .then((response) => {
           console.log(response.data.message);
+          alert(response.data.message);
+          navigate("/");
         })
         .catch((error) => {
           console.error(error);
         });
-        console.log("Redirecting...");
-        navigate("/");
-        alert("Successfully registered!"); // Need to change this later on to be cooler.
     }
 
     return (
