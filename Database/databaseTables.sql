@@ -6,12 +6,11 @@ CREATE TABLE "login"(
 
 DROP TABLE IF EXISTS "client";
 CREATE TABLE "client"(
-    "username" VARCHAR PRIMARY KEY,
     "fullName" VARCHAR,
     "address1" VARCHAR,
     "address2" VARCHAR,
     "city" VARCHAR,
-    "State" VARCHAR(2),
+    "state" VARCHAR(2),
     "zip" VARCHAR
 )
 

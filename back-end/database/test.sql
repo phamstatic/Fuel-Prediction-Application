@@ -8,4 +8,13 @@ CREATE TABLE login (
 
 INSERT INTO login (username, password)
 VALUES('john', 'pham');
-VALUES('admin', 'password');
+
+
+CREATE TABLE client (
+    fullName VARCHAR(255) PRIMARY KEY,
+    address1 VARCHAR(255),
+    address2 VARCHAR(255),
+    city VARCHAR(255),
+    state VARCHAR(2),
+    zip VARCHAR(255)
+);
