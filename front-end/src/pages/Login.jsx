@@ -19,32 +19,23 @@ const Login = () => {
   
     const loginForm = (event) => {
       event.preventDefault();
-  
       axios.post(`http://localhost:${port}/Login`, formData)
         .then((response) => {
           console.log(response.data.message);
           alert(response.data.message);
-          if (response.data.firstLogin) {
-            navigate("/Profile",{state:{id:formData.username}})
-          } else {
-            navigate("/Quote",{state:{id:formData.username}})
-          }
+          if (response.data.success == true) {
+            if(response.data.firstTimeLogin == true){
+              navigate("/Profile",{state:{id:formData.username}})
+            }else{
+              navigate("/Quote",{state:{id:formData.username}})
+            }
+          } 
         })
         .catch((error) => {
-          alert("Invalid Credentials!");
-          console.error('Error fetching data:', error);
+          console.error(error);
         }); 
-        userAuthentication();
     }
-    async function userAuthentication() {
-      try {
-          const response = await axios.get(`http://localhost:${port}/Login`);
-          console.log(response.data);
-      }
-      catch (error) {
-          console.log(error);
-      }
-  } 
+ 
     return (
         <>            
             <NavigationBar/>
