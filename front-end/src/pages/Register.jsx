@@ -9,34 +9,34 @@ const Register = () => {
     const port = 8000;
     const [formData, setFormData] = useState();
     const handleChange = (event) => {
-      setFormData({
-        ...formData,
-        [event.target.name]: event.target.value
-      });
+        setFormData({
+            ...formData,
+            [event.target.name]: event.target.value
+        });
     }
-  
+
     const navigate = useNavigate();
 
     const RegisterForm = (event) => {
-      event.preventDefault();
-      axios.post(`http://localhost:${port}/Register`, formData)
-        .then((response) => {
-          console.log(response.data.message);
-          alert(response.data.message);
-          if (response.data.success == true) {
-            navigate("/");
-          }
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+        event.preventDefault();
+        axios.post(`http://localhost:${port}/Register`, formData)
+            .then((response) => {
+                console.log(response.data.message);
+                alert(response.data.message);
+                if (response.data.success == true) {
+                    navigate("/");
+                }
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     }
 
     return (
         <>
-            <NavigationBar/>
+            <NavigationBar />
             <div className="container">
-              <Link to="/" className="back">Back</Link>
+                <Link to="/" className="back">Back</Link>
                 <div className="title">Register</div>
                 <form id="register" onSubmit={RegisterForm}>
                     <div className="input-group">
