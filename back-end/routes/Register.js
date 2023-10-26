@@ -35,13 +35,15 @@ router.post('/', async (req, res) => {
                 if (err) throw err;
                 else if (result.length > 0) { // The username is taken
                     res.send({
-                        message: "Username already taken!"
+                        message: "Username already taken!",
+                        success: false
                     })
                 }
                 else { // The username is not taken
                     AddUser(user.username, user.password);
                     res.status(200).send({
-                        message: "Successfully registered!"
+                        message: "Successfully registered!",
+                        success: true
                     });
                 }
             }

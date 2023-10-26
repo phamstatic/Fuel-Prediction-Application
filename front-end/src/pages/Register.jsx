@@ -23,7 +23,9 @@ const Register = () => {
         .then((response) => {
           console.log(response.data.message);
           alert(response.data.message);
-          navigate("/");
+          if (response.data.success == true) {
+            navigate("/");
+          }
         })
         .catch((error) => {
           console.error(error);
