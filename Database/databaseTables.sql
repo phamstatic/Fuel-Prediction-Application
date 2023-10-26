@@ -12,15 +12,14 @@ CREATE TABLE "client"(
     "city" VARCHAR,
     "state" VARCHAR(2),
     "zip" VARCHAR
-)
+);
 
 DROP TABLE IF EXISTS "fuelQuote";
 CREATE TABLE "fuelQuote"(
-    "username" Varchar PRIMARY KEY,
     "requested" INT,
     "delivAddress" VARCHAR, 
     "delivDate" VARCHAR,
     "suggPrice" DECIMAL(10,2)
-)
+);
 ALTER table "client" ADD FOREIGN key ("username") REFERENCES "login" ("username");
 ALTER table "fuelQuote" ADD FOREIGN key ("username") REFERENCES "login" ("username");

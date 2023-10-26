@@ -18,3 +18,11 @@ CREATE TABLE client (
     state VARCHAR(2),
     zip VARCHAR(255)
 );
+
+
+CREATE TABLE fuelQuote(
+    requested INT,
+    delivAddress VARCHAR (255), 
+    delivDate VARCHAR (255),
+    suggPrice DECIMAL(10,2)
+);
