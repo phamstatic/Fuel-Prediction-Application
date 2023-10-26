@@ -10,7 +10,7 @@ app.use(bodyParser.json())
 app.use("/Login", require("./routes/Login"));
 app.use("/Register", require("./routes/Register"));
 app.use("/Profile", require("./routes/Profile"));
-app.use("/FuelQuoteModule", require("./routes/FuelQuoteModule"));
+app.use("/Profile/Quote", require("./routes/FuelQuoteModule"));
 app.use("/History", require("./routes/History"));
 
 app.use("/Example", require("./routes/Example"));
