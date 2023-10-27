@@ -59,13 +59,13 @@ const History = () => {
                         </thead>
                         <tbody>
                             {orders.map(order => (
-                                <tr key={order.id}>
+                                <tr key={order.requested}>
                                     <td>{order.id}</td>
-                                    <td>{order.fuelAmount} G</td>
+                                    <td>{order.requested} G</td>
                                     <td>{Number((order.profitMargin * 100).toFixed(2))}%</td>
                                     <td>${formatter.format(order.totalCost)}</td>
-                                    <td>{order.address}</td>
-                                    <td>{order.date}</td>
+                                    <td>{order.delivAddress}</td>
+                                    <td>{order.delivDate}</td>
                                 </tr>
                             ))}
                         </tbody>
