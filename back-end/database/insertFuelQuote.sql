@@ -18,3 +18,6 @@ VALUES('nobara', '0', '194 South Albany Dr., Bethpage, NY, 11714', 'N/A', '0.00'
 
 INSERT INTO fuelQuote(username, requested, delivAddress, delivDate, suggPrice)
 VALUES('gojo', '0', '93 San Juan Dr., Victoria, TX 77904', 'N/A', '0.00');
+
+INSERT INTO fuelQuote(username, requested, delivAddress, delivDate, suggPrice)
+VALUES('Todo', '5', 'Goat', 'N/A', '0.00');
