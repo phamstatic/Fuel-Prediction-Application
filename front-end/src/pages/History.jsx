@@ -51,7 +51,7 @@ const History = () => {
                             <tr>
                                 <th>#</th>
                                 <th>Fuel Amount (G)</th>
-                                <th>Profit Margin (%)</th>
+                                <th>Suggested Price</th>
                                 <th>Total Cost ($)</th>
                                 <th>Address</th>
                                 <th>Date</th>
@@ -59,10 +59,10 @@ const History = () => {
                         </thead>
                         <tbody>
                             {orders.map(order => (
-                                <tr key={order.requested}>
+                                <tr key={order.delivDate}>
                                     <td>{order.id}</td>
                                     <td>{order.requested} G</td>
-                                    <td>{Number((order.profitMargin * 100).toFixed(2))}%</td>
+                                    <td>{order.suggPrice}</td>
                                     <td>${formatter.format(order.totalCost)}</td>
                                     <td>{order.delivAddress}</td>
                                     <td>{order.delivDate}</td>
@@ -72,7 +72,11 @@ const History = () => {
                     </table>
                 </div>
                 <br/>
-                {/*<section id="Search">
+                {/*
+                
+                //REMOVED PRICE MARGIN FOR THE TIME BEING AND ID
+                
+                <section id="Search">
                     <form id = "history" onSubmit = {historySort}>
                         <p id="subtitle">Search</p>
                         <p>
