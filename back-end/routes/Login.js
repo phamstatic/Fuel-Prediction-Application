@@ -2,7 +2,8 @@ var express = require('express');
 var router = express.Router();
 var connection = require("../database/Database");
 const bcrypt = require("bcrypt");
-
+var app = express();
+app.use(express.json());
 
 router.get('/', async(req, res) => {
     res.send("GET HANDLER for /Login route"); 
@@ -10,13 +11,15 @@ router.get('/', async(req, res) => {
 
 router.post('/', async (req, res) => { 
     let user = req.body;
-    let sql = `
-    SELECT log.password, cli.fullName 
-    FROM login log 
-    LEFT JOIN client cli ON log.username = cli.username 
-    WHERE log.username = ?;`;
-
+    if(!user || !user.username) {
+        res.status(400).send({
+            message: "Username is required.",
+            success: false
+        });
+        return;
+    }
     try{
+        let sql = 'SELECT log.password, cli.fullName FROM login log LEFT JOIN client cli ON log.username = cli.username WHERE log.username = ?';
         connection.query(sql, [user.username], async (err, results) => {
             if (err) throw err;
             console.log(results);
@@ -54,7 +57,7 @@ router.post('/', async (req, res) => {
             });
         });
     } catch (error) {
-
+        console.error(error);
     }
 });
 
