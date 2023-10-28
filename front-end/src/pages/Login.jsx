@@ -23,8 +23,8 @@ const Login = () => {
         .then((response) => {
           console.log(response.data.message);
           alert(response.data.message);
-          if (response.data.success == true) {
-            if(response.data.firstTimeLogin == true){
+          if (response.data.success === true) {
+            if(response.data.firstTimeLogin === true){
               navigate("/Profile",{state:{id:formData.username}})
             }else{
               navigate("/Quote",{state:{id:formData.username}})

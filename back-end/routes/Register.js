@@ -1,6 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var connection = require("../database/Database");
+var bcrypt = require('bcrypt');
+
+const saltRounds = 10; 
 
 router.get('/', async (req, res) => {
     res.send("GET HANDLER for /REGISTER route");
@@ -14,9 +17,12 @@ PrintAll = () => {
 }
 
 AddUser = (username, password) => {
-    connection.query(`INSERT INTO login (username, password) VALUES('${username}', '${password}')`, (err, result) => {
+    bcrypt.hash(password, saltRounds, (err, hashedPassword) => {
         if (err) throw err;
-        PrintAll(); // Remove this later on.
+        connection.query(`INSERT INTO login (username, password) VALUES('${username}', '${hashedPassword}')`, (err, result) => {
+            if (err) throw err;
+            PrintAll(); // Remove this later on.
+        });
     });
 }
 
