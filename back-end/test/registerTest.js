@@ -1,3 +1,4 @@
+const Register = require('../routes/Register');
 var connection = require("../database/Database");
 const chai = require('chai');
 const chaiHttp = require('chai-http');

@@ -6,16 +6,8 @@ router.get('/', async (req, res) => {
     res.send("GET HANDLER for /REGISTER route");
 })
 
-PrintAll = () => {
-    connection.query(`SELECT * FROM login;`, (err, result) => {
-        if (err) throw err;
-        console.log(result);
-    });
-}
-
 AddUser = (username, password) => {
     connection.query(`INSERT INTO login (username, password) VALUES('${username}', '${password}')`, (err, result) => {
-        if (err) throw err;
     });
 }
 
@@ -23,8 +15,7 @@ router.post('/', async (req, res) => {
     let user = req.body;
     try {
         connection.query(`SELECT 1 FROM login WHERE username = '${user.username}';`, (err, result) => {
-            if (err) throw err;
-            else if (result.length > 0) { // The username is taken
+            if (result.length > 0) { // The username is taken
                 res.status(400).send({
                     message: "Username already taken! Please try again.",
                     success: false
