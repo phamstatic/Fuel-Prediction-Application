@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+var connection = require("../database/Database");
+
 
 const orders = [
     {
@@ -86,7 +88,20 @@ const orders = [
 
 
 router.get('/', async(req, res) => {
-    res.status(200).send(orders);
+    //res.status(200).send(orders);
+    
+    try {
+        connection.query(`SELECT * FROM fuelquote;`, (err, result) => {
+            if (err) throw err;
+            else { // WILL grab everything from fuel quote table
+                res.json(result);
+            }
+        }
+        )
+    }
+    catch (error) {
+    }
 })
+
 
 module.exports = router;
