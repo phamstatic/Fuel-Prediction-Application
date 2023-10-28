@@ -17,19 +17,19 @@ class FuelQuoteModule {
 
 router.get('/', async(req, res) => {
     res.status(200).send(quote.createQuote);
-    res.send(users)
+
 })
 
 router.post('/', async (req, res) => { 
     let user = req.body;
     console.log(user);
     const quote = new FuelQuoteModule(user.gallonsRequested, user.deliveryAddress, user.deliveryDate);
-    quote.createQuote();
+    let sugg = quote.createQuote();
 
     let sql = 
     `
     INSERT INTO fuelquote(requested, delivAddress,delivDate,suggPrice)
-    VALUES( '${user.requested}','${user.delivAddress}','${user.delivDate}','${quote.createQuote}');
+    VALUES( '${user.gallonsRequested}','${user.deliveryAddress}','${user.deliveryDate}','${sugg}');
     `;
 
     connection.query(sql, (err, result) => {
@@ -40,4 +40,3 @@ router.post('/', async (req, res) => {
 });
 
 module.exports = router;
-module.exports = FuelQuoteModule;
