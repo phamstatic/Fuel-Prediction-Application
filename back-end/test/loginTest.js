@@ -4,6 +4,7 @@ const chaiHttp = require('chai-http');
 const app = require('../App');
 chai.use(chaiHttp);
 const expect = chai.expect;
+const bcrypt = require("bcrypt");
 
 describe('GET /LOGIN', () => {
     it('1. Get Handler for /LOGIN Route correctly works.', (done) => {
@@ -18,7 +19,38 @@ describe('GET /LOGIN', () => {
 });
 
 describe('POST /LOGIN', () => {
-    it('2. Attempting to login with incorrect username.', (done) => {
+    it('2. User is successfully logged in.', (done) => {
+        const userData = {
+            username: 'testuser',
+            password: 'testpassword',
+        };
+        connection.query(`SELECT password FROM login WHERE username = ?`, [userData.username], async (err, result) => {
+            if (err) return done(err);
+            if (result.length === 0) {
+                return done();
+            }
+            const hashedPasswordFromDB = result[0].password;
+            try {
+                const isPasswordCorrect = await bcrypt.compare(userData.password, hashedPasswordFromDB);
+                if (!isPasswordCorrect) {
+                    return done();
+                }
+                chai.request(app)
+                    .post('/LOGIN')
+                    .send(userData)
+                    .end((err, res) => {
+                        expect(res).to.have.status(200);
+                        expect(res.body.message).to.equal("Login successful!");
+                        done();
+                    });
+    
+            } catch (error) {
+                done(error);
+            }
+        });
+    });
+
+    it('3. Attempting to login with incorrect username.', (done) => {
         const userData = {
             username: 'npc',
             password: 'password',
@@ -35,7 +67,7 @@ describe('POST /LOGIN', () => {
             });
     });
 
-    it('3. Attempting to login with incorrect password.', (done) => {
+    it('4. Attempting to login with incorrect password.', (done) => {
         const userData = {
             username: 'admin', 
             password: 'wrongpassword', 
@@ -51,7 +83,7 @@ describe('POST /LOGIN', () => {
             });
     });
 
-    it('4. No username provided.', (done) => {
+    it('5. No username provided.', (done) => {
         const userData = {
             password: 'somepassword',
         };
@@ -66,7 +98,7 @@ describe('POST /LOGIN', () => {
             });
     });
 
-    it('5. No password provided.', (done) => {
+    it('6. No password provided.', (done) => {
         const userData = {
             username: 'user1',
         };
