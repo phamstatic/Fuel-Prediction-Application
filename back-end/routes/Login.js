@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt");
 
 
 router.get('/', async(req, res) => {
-    res.send("GET HANDLER for /Login route"); 
+    res.send("GET HANDLER for /LOGIN route"); 
 })
 
 router.post('/', async (req, res) => { 

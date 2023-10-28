@@ -11,10 +11,7 @@ router.get('/', async (req, res) => {
 
 AddUser = (username, password) => {
     bcrypt.hash(password, saltRounds, (err, hashedPassword) => {
-        if (err) throw err;
         connection.query(`INSERT INTO login (username, password) VALUES('${username}', '${hashedPassword}')`, (err, result) => {
-            if (err) throw err;
-            PrintAll(); // Remove this later on.
         });
     });
 }
@@ -36,8 +33,7 @@ router.post('/', async (req, res) => {
                     success: true
                 });
             }
-        }
-        )
+        })
     }
     catch (error) {
 

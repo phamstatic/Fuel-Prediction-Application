@@ -13,6 +13,4 @@ app.use("/Profile", require("./routes/Profile"));
 app.use("/Profile/Quote", require("./routes/FuelQuoteModule"));
 app.use("/History", require("./routes/History"));
 
-app.use("/Example", require("./routes/Example"));
-
 module.exports = app;

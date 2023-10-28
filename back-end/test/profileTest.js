@@ -16,3 +16,27 @@ describe('GET /PROFILE', () => {
             });
     });
 });
+
+
+describe('POST /PROFILE', () => {
+    it('2. Create user profile correctly works.', (done) => {
+        const userData = {
+            username: 'testuser',
+            fullName: 'testuser',
+            address1: 'Street',
+            address2: 'Street2',
+            city: 'Houston',
+            state: 'TX',
+            zip: '12345',
+        };
+
+        chai.request(app)
+            .post('/PROFILE')
+            .send(userData)
+            .end((err, res) => {
+                expect(res).to.have.status(200);
+                expect(res.body.message).to.equal(`User profile successfully created.`);
+                done();
+            });
+    }).timeout(0);
+});
