@@ -33,8 +33,7 @@ router.post('/', async (req, res) => {
                     success: true
                 });
             }
-        }
-        )
+        })
     }
     catch (error) {
 
