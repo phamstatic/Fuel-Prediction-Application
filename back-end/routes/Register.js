@@ -16,7 +16,6 @@ PrintAll = () => {
 AddUser = (username, password) => {
     connection.query(`INSERT INTO login (username, password) VALUES('${username}', '${password}')`, (err, result) => {
         if (err) throw err;
-        PrintAll(); // Remove this later on.
     });
 }
 
@@ -26,7 +25,7 @@ router.post('/', async (req, res) => {
         connection.query(`SELECT 1 FROM login WHERE username = '${user.username}';`, (err, result) => {
             if (err) throw err;
             else if (result.length > 0) { // The username is taken
-                res.send({
+                res.status(400).send({
                     message: "Username already taken! Please try again.",
                     success: false
                 })
