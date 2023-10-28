@@ -20,7 +20,7 @@ const clients = []
 clients.push(test);
 
 router.get('/', async(req, res) => {
-    res.send('GET HANDLER for /Profile route');
+    res.send('GET HANDLER for /PROFILE route');
 })
 
 router.post('/', async (req, res) => { 
