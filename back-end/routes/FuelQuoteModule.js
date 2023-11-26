@@ -11,7 +11,13 @@ class FuelQuoteModule {
         this.suggestedPrice = 0;
     }
     createQuote() {
-        this.suggestedPrice = 0.00;
+        let gallonFactor = .02;
+        
+        if(this.gallonsRequested > 1000){
+            gallonFactor = .03;
+        }
+        
+        this.suggestedPrice = 1.50 * (.1  + gallonFactor/* + rate history factor + location factor*/ )
         return this.suggestedPrice;
     }
 }
