@@ -1,13 +1,24 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useLocation } from 'react-router-dom';
 import "../stylesheets/Home.css";
 import axios from "axios";
 import NavigationBar from "../components/NavigationBar";
 
 const Profile = () => {
-        
+
+    const location = useLocation();
+
     const port = 8000;
-    const [formData, setFormData] = useState();
+    const [formData, setFormData] = useState({
+        username: location.state.id,
+        name: '',
+        address1: '',
+        address2: '',
+        city: '',
+        state: '',
+        zip: '',
+    });
   
     const handleChange = (event) => {
       setFormData({
