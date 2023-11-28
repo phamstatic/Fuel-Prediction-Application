@@ -104,6 +104,7 @@ Instructions on how to utilize and interact with this application locally.
 5. To unit test, run this in /back-end
    ```sh
    npm test
+   npm run test-with-coverage
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
