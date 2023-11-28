@@ -23,7 +23,7 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
     let user = req.body;
-    const client = new profile(user.fullName, user.address1, user.address2, user.city, user.state, user.zip);
+    const client = new profile(user.username, user.fullName, user.address1, user.address2, user.city, user.state, user.zip);
 
     let sql =
     `
@@ -34,7 +34,7 @@ router.post('/', async (req, res) => {
     try {
         connection.query(sql, (error, result) => {
             res.status(200).send({
-                message: "User profile successfully created."
+                message: `User profile successfully created. ${user.fullName} ${user.username}`
             });
         });
 
