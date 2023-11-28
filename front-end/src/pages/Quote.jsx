@@ -38,6 +38,16 @@ const Quote = () => {
       }
     }
 
+    function calculateQuote() {
+      let userGallonsRequested = document.getElementById("gallonsRequested");
+      let userProfitMargin = document.getElementById("profitMargin");
+      let userDeliveryAddress = document.getElementById("deliveryAddress");
+      alert(`Gallons Requested: ${userGallonsRequested.value}, Profit Margin: ${userProfitMargin.value}, Delivery Address: ${userDeliveryAddress.value}`);
+    
+      let outputSuggestedPrice = document.getElementById("suggestedPrice");
+      outputSuggestedPrice.innerHTML = `${(1.50 + 5).toFixed(2)}`;
+    }
+
     return (
         <>
             <NavigationBar/>
@@ -72,11 +82,11 @@ const Quote = () => {
                       </div>
                       <div className="output-field">
                         <span className="output-label">Total Price</span>
-                        <output>$<span id = "suggestedPrice">000.00</span></output>
+                        <output>$<span id = "totalPrice">000.00</span></output>
                       </div>
                     </div>
 
-                    <input id="getQuote" type = "submit" value = "Get Quote"/>
+                    <input id="getQuote" type = "button" value = "Get Quote" onClick={calculateQuote}/>
                     <input id="submitQuote" type = "submit" value = "Submit"/>
 
                 </form>
