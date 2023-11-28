@@ -65,7 +65,20 @@ const Quote = () => {
                             <input id = "deliveryDate" name = "deliveryDate" type="date" onChange={handleChange} required  />
                         </div>
                     </div>
-                    <input type = "submit" value = "Submit"/>
+                    <div className="output-group">
+                      <div className="output-field">
+                        <span className="output-label">Suggested Price</span>
+                        <output>$<span id = "suggestedPrice">000.00</span></output>
+                      </div>
+                      <div className="output-field">
+                        <span className="output-label">Total Price</span>
+                        <output>$<span id = "suggestedPrice">000.00</span></output>
+                      </div>
+                    </div>
+
+                    <input id="getQuote" type = "submit" value = "Get Quote"/>
+                    <input id="submitQuote" type = "submit" value = "Submit"/>
+
                 </form>
                 
 
