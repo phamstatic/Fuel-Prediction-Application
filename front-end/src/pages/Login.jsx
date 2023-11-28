@@ -27,7 +27,7 @@ const Login = () => {
             if(response.data.firstTimeLogin === true){
               navigate("/Profile",{state:{id:formData.username}})
             }else{
-              navigate("/Quote",{state:{id:formData.username}})
+              navigate("/Profile/Quote",{state:{id:formData.username}})
             }
           } 
         })

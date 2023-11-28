@@ -45,7 +45,7 @@ const Profile = () => {
           axios.post(`http://localhost:${port}/Profile`, formData)
             .then((response) => {
               console.log(response.data.message);
-              navigate("/Quote")
+              navigate("/Profile/Quote")
             })
             .catch((error) => {
               console.error(error);
