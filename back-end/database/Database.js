@@ -1,4 +1,6 @@
 const mysql = require('mysql')
+var bcrypt = require('bcrypt');
+const saltRounds = 10; 
 
 const connection = mysql.createConnection({
     database: "testing",
@@ -8,8 +10,61 @@ const connection = mysql.createConnection({
     insecureAuth : true
 })
 
+
 connection.connect((err => {
-    //console.log('MySQL Connected');
+    console.log('MySQL Database Connected');
 }));
+
+/// Predatabase Information Loading
+
+bcrypt.hash("password", saltRounds, (err, hashedPassword) => {
+    connection.query(`
+    
+    DROP TABLE IF EXISTS Login;
+    CREATE TABLE login (
+        username varchar(255) PRIMARY KEY,
+        password varchar(255)
+    );
+
+    INSERT INTO login (username, password) VALUES('admin', '${hashedPassword}');
+
+    DROP TABLE IF EXISTS fuelQuote;
+    CREATE TABLE fuelQuote(
+        username VARCHAR(255) PRIMARY KEY,
+        requested INT,
+        delivAddress VARCHAR(255), 
+        delivDate VARCHAR(255),
+        suggPrice DECIMAL(10,2)
+    );
+
+
+    DROP TABLE IF EXISTS client;
+    CREATE TABLE client (
+        username VARCHAR(255) PRIMARY KEY,
+        fullName VARCHAR(255),
+        address1 VARCHAR(255),
+        address2 VARCHAR(255),
+        city VARCHAR(255),
+        state VARCHAR(2),
+        zip VARCHAR(255)
+    );
+
+    INSERT INTO client(username, fullName, address1, address2, city, state, zip)
+    VALUES('yuji', 'Yuji Itadori', '939 Euclid Ave.', ' ', 'Los Angeles', 'CA', '90008');
+    
+    INSERT INTO client(username, fullName, address1, address2, city, state, zip)
+    VALUES('megumi', 'Megumi Fushiguro', '8528 Beaver Ridge Lane', ' ', 'Southington', 'CT', '06489');
+    
+    INSERT INTO client(username, fullName, address1, address2, city, state, zip)
+    VALUES('nobara', 'Nobara Kugisaki', '194 South Albany Dr.', ' ', 'Bethpage', 'NY', '11714');
+    
+    INSERT INTO client(username, fullName, address1, address2, city, state, zip)
+    VALUES('gojo', 'Satoru Gojo', '93 San Juan Dr.', ' ', 'Victoria', 'TX', '77904');
+
+    `, (err, result) => {
+    });
+});
+
+
 
 module.exports = connection;
