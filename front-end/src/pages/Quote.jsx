@@ -42,10 +42,15 @@ const Quote = () => {
       let userGallonsRequested = document.getElementById("gallonsRequested");
       let userProfitMargin = document.getElementById("profitMargin");
       let userDeliveryAddress = document.getElementById("deliveryAddress");
-      alert(`Gallons Requested: ${userGallonsRequested.value}, Profit Margin: ${userProfitMargin.value}, Delivery Address: ${userDeliveryAddress.value}`);
+      if (userGallonsRequested.value.length < 1 || userProfitMargin.value.length < 1 || userDeliveryAddress.value.length < 1) {
+        alert("Finish filling the fields!");
+      }
+      else {
+        alert(`Gallons Requested: ${userGallonsRequested.value}, Profit Margin: ${userProfitMargin.value}, Delivery Address: ${userDeliveryAddress.value}`);
     
-      let outputSuggestedPrice = document.getElementById("suggestedPrice");
-      outputSuggestedPrice.innerHTML = `${(1.50 + 5).toFixed(2)}`;
+        let outputSuggestedPrice = document.getElementById("suggestedPrice");
+        outputSuggestedPrice.innerHTML = `${(1.50 + 5).toFixed(2)}`;
+        }
     }
 
     return (
