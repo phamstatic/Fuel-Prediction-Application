@@ -83,6 +83,32 @@ body {
   transition: all 0.3s ease;
 }
 
+.output-label {
+  width: 20%;
+  display: inline-flex;
+  font-weight: 500;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.output-field {
+  margin: 15px 0px 0px 0px;
+}
+
+.output-group .output-field output {
+  height: 45px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: 15px;
+  margin-right: 15px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+}
+
 .submit-button-wrapper {
   height: 45px;
   margin: 35px 0;
