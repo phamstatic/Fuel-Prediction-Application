@@ -11,19 +11,24 @@ class FuelQuoteModule {
         this.suggestedPrice = 0;
         this.state  = state;
     }
-    createQuote() {
+    createQuote(history) {
         let gallonFactor = .02;
         
         if(this.gallonsRequested > 1000){
             gallonFactor = .03;
         }
+        let historyFactor = 0;
+        if(history > 0){
+            historyFactor = .01;
+            
+        }
 
-        let locationFactor = 0.2;
+        let locationFactor = 0.02;
         if(this.state != "TX"){
-            locationFactor = 0.4;
+            locationFactor = 0.04;
         }
         
-        this.suggestedPrice = this.gallonsRequested * (1.50 * (1.1  + gallonFactor/* + rate history factor*/ + locationFactor))
+        this.suggestedPrice = 1.5 + (1.50 * (.01  + gallonFactor - historyFactor + locationFactor))
         return this.suggestedPrice;
     }
 }
@@ -35,7 +40,19 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
     let user = req.body;
     const quote = new FuelQuoteModule(user.username, user.gallonsRequested, user.deliveryAddress, user.deliveryDate, user.state);
-    let sugg = quote.createQuote();
+    let sugg = 0;
+    var history = 0;
+    try{
+        const historyCheck = await pool.query(
+            `SELECT COUNT(*) AS row_count FROM fuelquote WHERE username = ${user.username};`
+          );
+        history = parseInt(historyCheck.rows[0].row_count);
+        
+    }
+    catch(error){}
+
+    sugg = quote.createQuote(history);
+
 
     let sql =
     `
