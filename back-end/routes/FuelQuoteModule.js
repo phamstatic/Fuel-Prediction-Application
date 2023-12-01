@@ -52,12 +52,12 @@ router.post('/', async (req, res) => {
     catch(error){}
 
     sugg = quote.createQuote(history);
-
+    totalCost = sugg * user.gallonsRequested;
 
     let sql =
     `
-    INSERT INTO fuelquote(username, requested, delivAddress, delivDate, suggPrice)
-    VALUES('${user.username}', '${user.gallonsRequested}','${user.deliveryAddress}','${user.deliveryDate}','${sugg}');
+    INSERT INTO fuelquote(username, requested, delivAddress, delivDate, suggPrice,totalCost)
+    VALUES('${user.username}', '${user.gallonsRequested}','${user.deliveryAddress}','${user.deliveryDate}','${sugg}','${totalCost}');
     `;
     try {
         connection.query(sql, (err, result) => {

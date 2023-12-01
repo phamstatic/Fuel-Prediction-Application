@@ -30,7 +30,8 @@ connection.connect((err => {
             requested INT,
             delivAddress VARCHAR(255), 
             delivDate VARCHAR(255),
-            suggPrice DECIMAL(10,2)
+            suggPrice DECIMAL(10,2),
+            totalCost DECIMAL(10,2)
         );
     
         DROP TABLE IF EXISTS client;

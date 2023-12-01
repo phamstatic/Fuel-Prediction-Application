@@ -31,6 +31,7 @@ const Quote = () => {
         axios.post(`http://localhost:${port}/Profile/Quote`, formData)
           .then((response) => {
             console.log(response.data.message);
+            navigate("/Profile/History")
           })
           .catch((error) => {
             console.error(error);

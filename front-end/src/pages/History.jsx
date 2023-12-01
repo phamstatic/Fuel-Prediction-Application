@@ -19,26 +19,6 @@ const History = () => {
       });
   }, []);
 
-  /*
-  const historySort = (event) => {
-    event.preventDefault();
-
-    axios.post(`http://localhost:${port}/History`, formData)
-      .then((response) => {
-        console.log("PING");
-        if (response.data.firstLogin) {
-          //navigate("/Profile",{state:{id:formData.username}})
-        } else {
-          //navigate("/Quote",{state:{id:formData.username}})
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      }); 
-      //userAuthentication();
-      console.log("");
-  }
-    */
 
     return (
         <>
@@ -49,7 +29,7 @@ const History = () => {
                         <caption>Fuel Quote History</caption>
                         <thead>
                             <tr>
-                                <th>#</th>
+                                <th>User</th>
                                 <th>Fuel Amount (G)</th>
                                 <th>Suggested Price</th>
                                 <th>Total Cost ($)</th>
@@ -60,7 +40,7 @@ const History = () => {
                         <tbody>
                             {orders.map(order => (
                                 <tr key={order.delivDate}>
-                                    <td>{order.id}</td>
+                                    <td>{order.username}</td>
                                     <td>{order.requested} G</td>
                                     <td>{order.suggPrice}</td>
                                     <td>${formatter.format(order.totalCost)}</td>
