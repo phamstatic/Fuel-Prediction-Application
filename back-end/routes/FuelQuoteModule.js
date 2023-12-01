@@ -62,11 +62,13 @@ router.post('/', async (req, res) => {
     try {
         connection.query(sql, (err, result) => {
             res.status(200).send({
-                message: `Fuel quote information successfully quoted! Suggested Price: ${sugg}`
+                message: `Fuel quote information successfully quoted! Suggested Price: ${sugg}`,
+                suggestedPrice: sugg
             });
         });
     }
     catch (error) {
+        res.status(500).send({ message: "Error processing request", error: error.message });
     }
 });
 

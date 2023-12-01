@@ -19,8 +19,9 @@ const Quote = () => {
 
     const QuoteForm = (event) => {
       event.preventDefault();
-      if (formData.gallonsRequested.isInteger == false) {
+      if (!formData.gallonsRequested || !Number.isInteger(Number(formData.gallonsRequested))) {
         alert("Gallons requested is not an integer!");
+        return;
       }
       else if (formData.deliveryDate.length > 100) {
         alert("deliveryDate should be less than 100 characters!");
@@ -31,6 +32,7 @@ const Quote = () => {
         axios.post(`http://localhost:${port}/Profile/Quote`, formData)
           .then((response) => {
             console.log(response.data.message);
+            document.getElementById("suggestedPrice").innerHTML = response.data.suggestedPrice.toFixed(2);
             navigate("/Profile/History")
           })
           .catch((error) => {
