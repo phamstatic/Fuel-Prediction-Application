@@ -81,7 +81,7 @@ A full-stack group project created by four Computer Science majors at the Univer
 Instructions on how to utilize and interact with this application locally.
 
 ### Prerequisites
-* Node Package Manager (npm)
+* Node Package Manager (npm 18.17.0)
 * A local MySQL database
 
 ### Installation
