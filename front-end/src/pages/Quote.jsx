@@ -41,13 +41,12 @@ const Quote = () => {
 
     function calculateQuote() {
       let userGallonsRequested = document.getElementById("gallonsRequested");
-      let userProfitMargin = document.getElementById("profitMargin");
       let userDeliveryAddress = document.getElementById("deliveryAddress");
-      if (userGallonsRequested.value.length < 1 || userProfitMargin.value.length < 1 || userDeliveryAddress.value.length < 1) {
+      if (userGallonsRequested.value.length < 1 ||  userDeliveryAddress.value.length < 1) {
         alert("Finish filling the fields!");
       }
       else {
-        alert(`Gallons Requested: ${userGallonsRequested.value}, Profit Margin: ${userProfitMargin.value}, Delivery Address: ${userDeliveryAddress.value}`);
+        alert(`Gallons Requested: ${userGallonsRequested.value}, Delivery Address: ${userDeliveryAddress.value}`);
     
         let outputSuggestedPrice = document.getElementById("suggestedPrice");
         outputSuggestedPrice.innerHTML = `${(1.50 + 5).toFixed(2)}`;
@@ -67,10 +66,6 @@ const Quote = () => {
                         </div>
                         <div className="input-field">
                             <span className="input-label"></span>
-                        </div>
-                        <div className="input-field">
-                            <span className="input-label">Profit Margin</span>
-                            <input id = "profitMargin" name = "profitMargin" type="number" placeholder="Enter your profit margin" maxlength="100" onChange={handleChange} required  />
                         </div>
                         <div className="input-field">
                             <span className="input-label">Delivery Address</span>
