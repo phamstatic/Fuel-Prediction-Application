@@ -49,7 +49,8 @@ router.post('/', async (req, res) => {
         history = parseInt(historyCheck.rows[0].row_count);
         
     }
-    catch(error){}
+    catch(error){
+    }
 
     sugg = quote.createQuote(history);
     totalCost = sugg * user.gallonsRequested;

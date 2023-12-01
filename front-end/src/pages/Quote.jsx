@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "../stylesheets/Quote.css";
 import NavigationBar from "../components/NavigationBar";
 import axios from "axios";
@@ -7,8 +7,11 @@ import axios from "axios";
 
 const Quote = () => {
 
+    const location = useLocation();
     const port = 8000;
-    const [formData, setFormData] = useState();
+    const [formData, setFormData] = useState({
+      username: location.state.id,
+    });
     const navigate = useNavigate();
     const handleChange = (event) => {
       setFormData({
@@ -50,6 +53,9 @@ const Quote = () => {
     
         let outputSuggestedPrice = document.getElementById("suggestedPrice");
         outputSuggestedPrice.innerHTML = `${(1.50 + 5).toFixed(2)}`;
+
+        let totalCalculatedPrice = document.getElementById("totalPrice");
+        totalCalculatedPrice.innerHTML = `${(250 + 5).toFixed(2)}`;
         }
     }
 
