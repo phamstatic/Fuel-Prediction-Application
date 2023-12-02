@@ -37,6 +37,21 @@ router.get('/', async (req, res) => {
     res.send('GET HANDLER for /PROFILE/QUOTE route');
 })
 
+router.post('/Suggest', async (req, res) => {
+    let user = req.body;
+    const quote = new FuelQuoteModule(user.username, user.gallonsRequested, user.deliveryAddress, user.deliveryDate, user.state);
+    let sugg = 0;
+    var history = 0;
+    sugg = quote.createQuote(history);
+    totalCost = sugg * user.gallonsRequested;
+    res.status(200).send({
+        message: `Fuel quote information successfully quoted!`,
+        suggestedPrice: sugg,
+        totalCost: totalCost
+    });
+    console.log(sugg, totalCost);
+})
+
 router.post('/', async (req, res) => {
     let user = req.body;
     const quote = new FuelQuoteModule(user.username, user.gallonsRequested, user.deliveryAddress, user.deliveryDate, user.state);
