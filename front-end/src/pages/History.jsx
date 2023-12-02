@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { NavLink as Link, useNavigate } from "react-router-dom";
 import "../stylesheets/History.css";
 import axios from "axios";
 import NavigationBar from "../components/NavigationBar";
@@ -24,6 +25,8 @@ const History = () => {
         <>
             <NavigationBar/>
             <div className="container">
+                <Link to={-1} className="back">Back</Link>
+
                 <div className="tableFixHead">
                     <table>
                         <caption>Fuel Quote History</caption>
