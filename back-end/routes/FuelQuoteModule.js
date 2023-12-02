@@ -63,7 +63,7 @@ router.post('/', async (req, res) => {
     try {
         connection.query(sql, (err, result) => {
             res.status(200).send({
-                message: `Fuel quote information successfully quoted! Suggested Price: ${sugg}`,
+                message: `Fuel quote information successfully quoted!`,
                 suggestedPrice: sugg
             });
             console.log("Fuel quote suggested:", sugg);

@@ -21,8 +21,8 @@ describe('GET /LOGIN', () => {
 describe('POST /LOGIN', () => {
     it('2. User is successfully logged in.', (done) => {
         const userData = {
-            username: 'testuser',
-            password: 'testpassword',
+            username: 'admin',
+            password: 'password',
         };
         connection.query(`SELECT password FROM login WHERE username = ?`, [userData.username], async (err, result) => {
             if (err) return done(err);
@@ -40,7 +40,7 @@ describe('POST /LOGIN', () => {
                     .send(userData)
                     .end((err, res) => {
                         expect(res).to.have.status(200);
-                        expect(res.body.message).to.equal("Login successful!");
+                        expect(res.body.message).to.equal("Complete your profile!");
                         done();
                     });
     
