@@ -63,10 +63,8 @@ router.post('/', async (req, res) => {
                 success: true,
                 firstTimeLogin: false
             });
-            console.log("Login successful!");
         });
     } catch (error) {
-        console.error(error);
     }
 });
 
