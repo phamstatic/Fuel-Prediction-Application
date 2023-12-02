@@ -54,6 +54,7 @@ const Quote = () => {
         .then((response) => {
           console.log(response.data.message);
           document.getElementById("suggestedPrice").innerHTML = response.data.suggestedPrice.toFixed(2);
+          document.getElementById("totalPrice").innerHTML = document.getElementById("gallonsRequested").value * response.data.suggestedPrice.toFixed(2);
         })
         .catch((error) => {
           console.error(error);
