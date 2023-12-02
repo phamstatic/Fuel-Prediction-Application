@@ -34,7 +34,7 @@ router.post('/', async (req, res) => {
     try {
         connection.query(sql, (error, result) => {
             res.status(200).send({
-                message: `User profile successfully created. ${user.fullName} ${user.username}`
+                message: `User profile successfully created.`
             });
         });
 
