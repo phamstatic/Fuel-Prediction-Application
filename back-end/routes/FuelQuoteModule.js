@@ -10,25 +10,22 @@ class FuelQuoteModule {
         this.deliveryDate = deliveryDate;
         this.suggestedPrice = 0;
         this.state  = state;
+        this.gallonFactor = .02;
+        this.historyFactor = 0;
+        this.locationFactor = .02;
     }
     createQuote(history) {
-        let gallonFactor = .02;
-        
         if(this.gallonsRequested > 1000){
-            gallonFactor = .03;
+            this.gallonFactor = .03;
         }
-        let historyFactor = 0;
         if(history > 0){
-            historyFactor = .01;
-            
+            this.historyFactor = .01;
         }
 
-        let locationFactor = 0.02;
         if(this.state != "TX"){
-            locationFactor = 0.04;
+            this.locationFactor = .04;
         }
-        
-        this.suggestedPrice = 1.5 + (1.50 * (.01  + gallonFactor - historyFactor + locationFactor))
+        this.suggestedPrice = 1.5 + (1.50 * (.01  + this.gallonFactor - this.historyFactor + this.locationFactor))
         return this.suggestedPrice;
     }
 }
@@ -62,7 +59,6 @@ router.post('/', async (req, res) => {
             `SELECT COUNT(*) AS row_count FROM fuelquote WHERE username = ${user.username};`
           );
         history = parseInt(historyCheck.rows[0].row_count);
-        
     }
     catch(error){
     }
@@ -86,7 +82,7 @@ router.post('/', async (req, res) => {
         });
     }
     catch (error) {
-        res.status(500).send({ message: "Error processing request", error: error.message });
+        //res.status(500).send({ message: "Error processing request", error: error.message });
     }
 });
 
