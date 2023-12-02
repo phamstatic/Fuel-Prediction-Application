@@ -84,3 +84,15 @@ label {
 #submitQuote:hover, #getQuote:hover {
   background: #1710D2;
 }
+
+.history {
+  margin-left: auto; 
+  margin-right: 0;
+  color: black;
+  align-self:first baseline;
+  text-decoration: none;
+}
+
+.history:hover {
+  text-decoration: underline;
+}

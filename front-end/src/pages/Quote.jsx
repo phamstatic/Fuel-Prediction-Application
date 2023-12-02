@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, NavLink as Link } from "react-router-dom";
 import "../stylesheets/Quote.css";
 import NavigationBar from "../components/NavigationBar";
 import axios from "axios";
@@ -66,6 +66,7 @@ const Quote = () => {
         <>
             <NavigationBar/>
             <div className="container">
+                <Link to="/Profile/History" className="history">Show History</Link>
                 <div className="title">Quote</div>
                 <form id = "FuelQuoteModule" onSubmit = {QuoteForm}>
                 <div className="input-group">
