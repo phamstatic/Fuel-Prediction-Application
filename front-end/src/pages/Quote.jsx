@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useLocation } from 'react-router-dom';
 import "../stylesheets/Quote.css";
 import NavigationBar from "../components/NavigationBar";
 import axios from "axios";
 
 
 const Quote = () => {
-
+    const location = useLocation();
     const port = 8000;
-    const [formData, setFormData] = useState();
+    const [formData, setFormData] = useState({
+      username: location.state.id,
+    });
     const navigate = useNavigate();
     const handleChange = (event) => {
       setFormData({
@@ -47,12 +50,17 @@ const Quote = () => {
       if (userGallonsRequested.value.length < 1 ||  userDeliveryAddress.value.length < 1) {
         alert("Finish filling the fields!");
       }
-      else {
-        alert(`Gallons Requested: ${userGallonsRequested.value}, Delivery Address: ${userDeliveryAddress.value}`);
-    
-        let outputSuggestedPrice = document.getElementById("suggestedPrice");
-        outputSuggestedPrice.innerHTML = `${(1.50 + 5).toFixed(2)}`;
-        }
+      else {        
+        axios.post(`http://localhost:${port}/Profile/Quote`, formData)
+        .then((response) => {
+          console.log(response.data.message);
+          document.getElementById("suggestedPrice").innerHTML = response.data.suggestedPrice.toFixed(2);
+        })
+        .catch((error) => {
+          console.error(error);
+        }); 
+
+      }
     }
 
     return (

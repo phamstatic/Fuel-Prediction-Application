@@ -65,6 +65,8 @@ router.post('/', async (req, res) => {
                 message: `Fuel quote information successfully quoted! Suggested Price: ${sugg}`,
                 suggestedPrice: sugg
             });
+            console.log("Fuel quote suggested:", sugg);
+            console.log(user.username, user.gallonsRequested, user.deliveryAddress);
         });
     }
     catch (error) {
