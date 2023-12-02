@@ -50,11 +50,11 @@ const Quote = () => {
         alert("Finish filling the fields!");
       }
       else {        
-        axios.post(`http://localhost:${port}/Profile/Quote`, formData)
+        axios.post(`http://localhost:${port}/Profile/Quote/Suggest`, formData)
         .then((response) => {
           console.log(response.data.message);
           document.getElementById("suggestedPrice").innerHTML = response.data.suggestedPrice.toFixed(2);
-          document.getElementById("totalPrice").innerHTML = document.getElementById("gallonsRequested").value * response.data.suggestedPrice.toFixed(2);
+          document.getElementById("totalPrice").innerHTML = response.data.totalCost.toFixed(2);
         })
         .catch((error) => {
           console.error(error);
