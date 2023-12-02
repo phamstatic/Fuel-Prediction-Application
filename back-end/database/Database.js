@@ -33,6 +33,8 @@ connection.connect((err => {
             suggPrice DECIMAL(10,2),
             totalCost DECIMAL(10,2)
         );
+        INSERT INTO fuelQuote(username,requested,delivAddress,suggPrice,totalCost)
+        VALUES('admin', 10, 'street1', 1.61, 16.05);
     
         DROP TABLE IF EXISTS client;
         CREATE TABLE client (
