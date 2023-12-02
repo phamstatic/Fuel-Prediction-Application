@@ -6,7 +6,6 @@ import axios from "axios";
 
 
 const Quote = () => {
-
     const location = useLocation();
     const port = 8000;
     const [formData, setFormData] = useState({
@@ -22,8 +21,9 @@ const Quote = () => {
 
     const QuoteForm = (event) => {
       event.preventDefault();
-      if (formData.gallonsRequested.isInteger == false) {
+      if (!formData.gallonsRequested || !Number.isInteger(Number(formData.gallonsRequested))) {
         alert("Gallons requested is not an integer!");
+        return;
       }
       else if (formData.deliveryDate.length > 100) {
         alert("deliveryDate should be less than 100 characters!");
@@ -34,6 +34,7 @@ const Quote = () => {
         axios.post(`http://localhost:${port}/Profile/Quote`, formData)
           .then((response) => {
             console.log(response.data.message);
+            document.getElementById("suggestedPrice").innerHTML = response.data.suggestedPrice.toFixed(2);
             navigate("/Profile/History")
           })
           .catch((error) => {
@@ -48,15 +49,17 @@ const Quote = () => {
       if (userGallonsRequested.value.length < 1 ||  userDeliveryAddress.value.length < 1) {
         alert("Finish filling the fields!");
       }
-      else {
-        alert(`Gallons Requested: ${userGallonsRequested.value}, Delivery Address: ${userDeliveryAddress.value}`);
-    
-        let outputSuggestedPrice = document.getElementById("suggestedPrice");
-        outputSuggestedPrice.innerHTML = `${(1.50 + 5).toFixed(2)}`;
+      else {        
+        axios.post(`http://localhost:${port}/Profile/Quote`, formData)
+        .then((response) => {
+          console.log(response.data.message);
+          document.getElementById("suggestedPrice").innerHTML = response.data.suggestedPrice.toFixed(2);
+        })
+        .catch((error) => {
+          console.error(error);
+        }); 
 
-        let totalCalculatedPrice = document.getElementById("totalPrice");
-        totalCalculatedPrice.innerHTML = `${(250 + 5).toFixed(2)}`;
-        }
+      }
     }
 
     return (

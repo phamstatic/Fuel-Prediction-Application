@@ -26,7 +26,7 @@ connection.connect((err => {
     
         DROP TABLE IF EXISTS fuelQuote;
         CREATE TABLE fuelQuote(
-            username VARCHAR(255) PRIMARY KEY,
+            username VARCHAR(255),
             requested INT,
             delivAddress VARCHAR(255), 
             delivDate VARCHAR(255),
