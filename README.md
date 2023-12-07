@@ -44,7 +44,6 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
   </ol>
 </details>
 
@@ -106,14 +105,5 @@ Instructions on how to utilize and interact with this application locally.
    npm test
    npm run test-with-coverage
    ```
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-***screenshots to be added later on.***
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
